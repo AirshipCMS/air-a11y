@@ -16,11 +16,11 @@ export default () => {
             <div className="tile is-ancestor">
               <div className="tile is-parent">
                 <article className="tile is-child box">
-                  <label class="checkbox">
+                  <label className="checkbox">
                     <input type="checkbox" name="aisle_chair" />
                     Request an aisle chair to help with transfer to my seat on the plane
                     </label>
-                  <figure class="image is-128x128">
+                  <figure className="image is-128x128">
                     <img src="https://bulma.io/images/placeholders/128x128.png" />
                   </figure>
                   <span className="icon">
@@ -30,11 +30,11 @@ export default () => {
               </div>
               <div className="tile is-parent">
                 <article className="tile is-child box">
-                  <label class="checkbox">
+                  <label className="checkbox">
                     <input type="checkbox" name="seat_assistance" />
                     Request additional assistance to transfer to my seat. An additional person/transporter will help you to your seat.
                     </label>
-                  <figure class="image is-128x128">
+                  <figure className="image is-128x128">
                     <img src="https://bulma.io/images/placeholders/128x128.png" />
                   </figure>
                   <span className="icon">
@@ -51,11 +51,11 @@ export default () => {
             <div className="tile is-ancestor">
               <div className="tile is-parent">
                 <article className="tile is-child box">
-                  <label class="checkbox">
+                  <label className="checkbox">
                     <input type="checkbox" name="request_wheelhcair" />
                     Request a wheelchair to help me get to/from the aircraft.
                     </label>
-                  <figure class="image is-128x128">
+                  <figure className="image is-128x128">
                     <img src="https://bulma.io/images/placeholders/128x128.png" />
                   </figure>
                   <span className="icon">
@@ -65,11 +65,11 @@ export default () => {
               </div>
               <div className="tile is-parent">
                 <article className="tile is-child box">
-                  <label class="checkbox">
+                  <label className="checkbox">
                     <input type="checkbox" name="transportation_assistance" />
                     Request additional assistance to pull/push me in the wheelchair to and from the aircraft. An additional person/transporter will help you get to/from the aircraft.
                     </label>
-                  <figure class="image is-128x128">
+                  <figure className="image is-128x128">
                     <img src="https://bulma.io/images/placeholders/128x128.png" />
                   </figure>
                   <span className="icon">

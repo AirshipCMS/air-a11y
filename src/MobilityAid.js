@@ -5,17 +5,38 @@ import wheelchairs from './wheelchairs.json'
 
 export default () => {
   let history = useHistory()
-  let [state, setState] = useState({ filteredChairs: [], selectedChair: null, input: '' })
+  let [state, setState] = useState({ filteredChairs: [], selectedChair: null, input: '', showStorage: false, form: { cabin_storage: false } })
 
   const searchWheelchairs = ({ KeyCode, target }) => {
     setState({
+      ...state,
       filteredChairs: wheelchairs.filter(chair => chair.name.toLowerCase().includes(target.value.toLowerCase()))
     })
   }
 
   const selectChair = (selectedChair) => {
     return () => {
-      setState({ filteredChairs: [], selectedChair, input: selectedChair.name })
+      setState({ ...state, filteredChairs: [], selectedChair, input: selectedChair.name })
+    }
+  }
+
+  const next = () => {
+    if (!state.showStorage) {
+      setState({ ...state, showStorage: true })
+    } else {
+      history.push('/summary')
+    }
+  }
+
+  const updateForm = (field) => {
+    return () => {
+      setState({
+        ...state,
+        form: {
+          ...state.form,
+          cabin_storage: !state.form.cabin_storage
+        }
+      })
     }
   }
 
@@ -24,12 +45,13 @@ export default () => {
       <div className="content">
         <ProgressBar activeScreen='Mobility Aid' />
         <h1 className="title">About my Mobility Aid</h1>
-        <section className="section">
+        {state.selectedChair === null ? <section className="section">
           <div className="container">
-            <h1 className="title">Section</h1>
+            <h1 className="title">Tell us about your mobility aid</h1>
             <div className="panel-block">
               <p className="control has-icons-left">
-                <input value={state.input} onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Wheelchair Model" />
+                <p>Populates wheelchair name, and the dimensions into the fields below, then pulls in and shows an image.</p>
+                <input onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Wheelchair Model" />
                 <span className="icon is-left">
                   <i className="fas fa-search" aria-hidden="true"></i>
                 </span>
@@ -41,8 +63,9 @@ export default () => {
               </a>
             ))}
           </div>
-        </section>
-        {state.selectedChair ? <section>
+        </section> : null}
+        {!state.showStorage ? <section>
+          <h1 className="title">Dimensions</h1>
           <div className="columns">
             <div className="column">
               <div className="field is-horizontal">
@@ -52,7 +75,7 @@ export default () => {
                 <div className="field-body">
                   <div className="field">
                     <p className="control">
-                      <input value={state.selectedChair.width} className="input" type="email" placeholder="Width" />
+                      <input value={state.selectedChair ? state.selectedChair.width : ''} className="input" type="email" placeholder="Width" />
                     </p>
                   </div>
                 </div>
@@ -65,7 +88,7 @@ export default () => {
                 <div className="field-body">
                   <div className="field">
                     <p className="control">
-                      <input value={state.selectedChair.height} className="input" type="email" placeholder="Height" />
+                      <input value={state.selectedChair ? state.selectedChair.height : ''} className="input" type="email" placeholder="Height" />
                     </p>
                   </div>
                 </div>
@@ -78,7 +101,7 @@ export default () => {
                 <div className="field-body">
                   <div className="field">
                     <p className="control">
-                      <input value={state.selectedChair.length} className="input" type="email" placeholder="Length" />
+                      <input value={state.selectedChair ? state.selectedChair.length : ''} className="input" type="email" placeholder="Length" />
                     </p>
                   </div>
                 </div>
@@ -91,20 +114,123 @@ export default () => {
                 <div className="field-body">
                   <div className="field">
                     <p className="control">
-                      <input value={state.selectedChair.weight} className="input" type="email" placeholder="Weight" />
+                      <input value={state.selectedChair ? state.selectedChair.weight : ''} className="input" type="email" placeholder="Weight" />
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="column">
-              <figure className="image is-128x128">
+              {state.selectedChair ? <figure className="image is-128x128">
                 <img src={state.selectedChair.image} />
-              </figure>
+              </figure> : null}
             </div>
           </div>
         </section> : null}
-        <button onClick={() => history.push('/seat+location')} className="button is-fullwidth">Button</button>
+        {state.showStorage ? <section className="section">
+          <div className="container">
+            <h1 className="title">Storing my mobility aid</h1>
+            <h2 className="title">Disassembled Dimensions:</h2>
+            <div className="control">
+              <label className="radio">
+                <input type="radio" name="aid_folds" />
+                My mobility aid folds
+              </label>
+              <label className="radio">
+                <input type="radio" name="aid_folds" />
+                My mobility aid does not fold
+              </label>
+            </div>
+            <p>Please add folded/disassembled dimensions, in case it needs to be stored in the aircraft cargo (below the plane).</p>
+            <div className="columns">
+              <div className="column">
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Width</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input value={state.selectedChair ? state.selectedChair.width : ''} className="input" type="email" placeholder="Width" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Height</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input value={state.selectedChair ? state.selectedChair.height : ''} className="input" type="email" placeholder="Height" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Length</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input value={state.selectedChair ? state.selectedChair.length : ''} className="input" type="email" placeholder="Length" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Weight</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input value={state.selectedChair ? state.selectedChair.weight : ''} className="input" type="email" placeholder="Weight" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="column">
+                {state.selectedChair ? <figure className="image is-128x128">
+                  <img src={state.selectedChair.image} />
+                </figure> : null}
+              </div>
+            </div>
+            <div className="box">
+              <div className="content">
+                <h1>Cabin Storage</h1>
+                <label className="checkbox">
+                  <input type="checkbox" name="cabin_storage" onChange={updateForm("cabin_storage")} />
+                  Please store my mobility aid in the cabin closet so I can access it easily. 
+Note: aircrafts have limited space in the cabin closet for foldable mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).
+                </label>
+              </div>
+            </div>
+
+            {state.form.cabinStorage ? <div className="box">
+              <div className="content">
+                <h1>Additional equipment</h1>
+                <p>I have medical equipment and/or wheelchair parts to store in the cabin closet (if space is available):</p>
+                <textarea className="textarea" placeholder=""></textarea>
+              </div>
+            </div> : null}
+
+            <div className="box">
+              <div className="content">
+                <h1>Aircraft cargo storage</h1>
+                <p>Any specific instructions for baggage handlers/ground staff</p>
+                <textarea className="textarea" placeholder=""></textarea>
+              </div>
+            </div>
+          </div>
+        </section> : null}
+        <button onClick={next} className="button is-fullwidth">Button</button>
       </div>
     </div >
   )
