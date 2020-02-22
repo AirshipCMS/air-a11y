@@ -18,7 +18,7 @@ export default () => {
               {needs.map(need => (
                 <div key={needs.code} className="tile is-parent">
                   <article className="tile is-child box">
-                    <label class="checkbox">
+                    <label className="checkbox">
                       <input type="checkbox" name={need.code} value={need.ocde}/>
                       {need.description}
                     </label>

@@ -28,16 +28,14 @@ export default () => {
     }
   }
 
-  const updateForm = (field) => {
-    return () => {
-      setState({
-        ...state,
-        form: {
-          ...state.form,
-          cabin_storage: !state.form.cabin_storage
-        }
-      })
-    }
+  const updateForm = (field, value) => {
+    setState({
+      ...state,
+      form: {
+        ...state.form,
+        [field]: value
+      }
+    })
   }
 
   return (
@@ -202,13 +200,86 @@ export default () => {
                 </figure> : null}
               </div>
             </div>
+            <div className="container">
+              <h1 className="title">Batteries (if applicable):</h1>
+              <div className="tile is-ancestor">
+                <div className="tile is-parent">
+                  <article className="tile is-child box">
+                    <label className="checkbox">
+                      <input type="checkbox" name='WCBW' />
+                      Wet cell / acid (spillable)
+                    </label>
+                  </article>
+                </div>
+                <div className="tile is-parent">
+                  <article className="tile is-child box">
+                    <label className="checkbox">
+                      <input type="checkbox" name='WCBD' />
+                      Dry cell / gel (non-spillable)
+                    </label>
+                  </article>
+                </div>
+                <div className="tile is-parent">
+                  <article className="tile is-child box">
+                    <label className="checkbox">
+                      <input type="checkbox" name='WCLB' onChange={({ target }) => updateForm('WCLB', target.checked)} />
+                      Lithium (number of grams):
+                    </label>
+                  </article>
+                </div>
+                {state.form.WCLB ? <div>
+                  <input className="input" type="text" />
+                </div> : null}
+              </div>
+            </div>
+            <div className="container">
+              <h1>For Wheelchairs</h1>
+              <div className="tile is-ancestor">
+                <div className="tile is-parent">
+                  <article className="tile is-child box">
+                    <label className="checkbox">
+                      <input type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
+                      My wheelchair’s back rest folds down. Fold lever location:
+                    </label>
+                    {state.form.foldable_back_rest ? <div>
+                      <input className="input" type="text" />
+                    </div> : null}
+                  </article>
+                </div>
+                <div className="tile is-parent">
+                  <article className="tile is-child box">
+                    <label className="checkbox">
+                      <input type="checkbox" name='removable_leg_rest' onChange={({ target }) => updateForm('removable_leg_rest', target.checked)} />
+                      My wheelchair’s leg rest can be lowered or removed. Instructions:
+                    </label>
+                    {state.form.removable_leg_rest ? <div>
+                      <textarea className="textarea"></textarea>
+                    </div> : null}
+                  </article>
+                </div>
+              </div>
+            </div>
+            <div className="content">
+              <h1>For powerchairs:</h1>
+              <div className="tile is-parent">
+                <article className="tile is-child box">
+                  <label className="checkbox">
+                    <input type="checkbox" name='removable_joystick' onChange={({ target }) => updateForm('removable_joystick', target.checked)} />
+                    My powerchair’s joystick can be removed. Instructions:
+                    </label>
+                  {state.form.removable_joystick ? <div>
+                    <textarea className="textarea"></textarea>
+                  </div> : null}
+                </article>
+              </div>
+            </div>
             <div className="box">
               <div className="content">
                 <h1>Cabin Storage</h1>
                 <label className="checkbox">
-                  <input type="checkbox" name="cabin_storage" onChange={updateForm("cabin_storage")} />
+                  <input type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
                   Please store my mobility aid in the cabin closet so I can access it easily. 
-Note: aircrafts have limited space in the cabin closet for foldable mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).
+Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).
                 </label>
               </div>
             </div>
@@ -217,14 +288,14 @@ Note: aircrafts have limited space in the cabin closet for foldable mobility aid
               <div className="content">
                 <h1>Additional equipment</h1>
                 <p>I have medical equipment and/or wheelchair parts to store in the cabin closet (if space is available):</p>
-                <textarea className="textarea" placeholder=""></textarea>
+                <input className="input" placeholder=""/>
               </div>
             </div> : null}
 
             <div className="box">
               <div className="content">
                 <h1>Aircraft cargo storage</h1>
-                <p>Any specific instructions for baggage handlers/ground staff</p>
+                <p>Any specific instructions for baggage handlers/ground staff?</p>
                 <textarea className="textarea" placeholder=""></textarea>
               </div>
             </div>
