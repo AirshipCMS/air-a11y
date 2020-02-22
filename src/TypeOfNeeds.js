@@ -18,11 +18,10 @@ export default () => {
               {needs.map(need => (
                 <div key={needs.code} className="tile is-parent">
                   <article className="tile is-child box">
-                    <p className="title">{need.description}</p>
-                    <input type="checkbox" name={need.code} value={need.ocde} />
-                    <span className="icon">
-                      <i className="help far fa-question-circle"></i>
-                    </span>
+                    <label class="checkbox">
+                      <input type="checkbox" name={need.code} value={need.ocde}/>
+                      {need.description}
+                    </label>
                   </article>
                 </div>
               ))}
