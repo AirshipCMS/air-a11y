@@ -4,16 +4,21 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import 'react-bulma-components/dist/react-bulma-components.min.css';
+import 'bulma/css/bulma.css'
 import './App.css';
+import Home from './Home'
+import SeatPreferences from './SeatPreferences'
 
 function App() {
   return (
     <Router>
       <div>
         <Switch>
-          <Route path="/">
-            {/* <Home /> */}
+          <Route exact={true} path="/">
+            <Home />
+          </Route>
+          <Route path="/seat+location">
+            <SeatPreferences />
           </Route>
         </Switch>
       </div>
