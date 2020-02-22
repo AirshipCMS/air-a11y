@@ -2,7 +2,7 @@
   "name": "air-a11y",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://airshipcms.github.io/air-a11y",
+  "homepage": "https://air-a11y.purelyfunctional.co",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
