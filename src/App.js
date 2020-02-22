@@ -2,17 +2,22 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <div>
+        <Switch>
+          <Route path="/">
+            {/* <Home /> */}
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
