@@ -108,7 +108,9 @@ export default () => {
             </div>
           </div>
         </section>
-        <button className="button is-fullwidth">Button</button>
+        <section>
+          <button onClick={() => history.push('/seat-transfer')} className="button is-fullwidth">Button</button>
+        </section>
       </div>
     </div >
   )
