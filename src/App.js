@@ -8,6 +8,7 @@ import 'bulma/css/bulma.css'
 import './App.css';
 import Home from './Home'
 import SeatPreferences from './SeatPreferences'
+import TypeOfNeeds from './TypeOfNeeds';
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route path="/seat+location">
             <SeatPreferences />
+          </Route>
+          <Route path="/type-of-needs">
+            <TypeOfNeeds />
           </Route>
         </Switch>
       </div>
