@@ -1,5 +1,5 @@
 import React from 'react'
-const pages = ['Needs', 'Seat+Location', 'Seat Transfer', 'Mobility Aid', 'Summary']
+const pages = ['Needs', 'Seat+Location', 'Seat Transfer', 'Mobility Aid', 'Mobility Aid Storage', 'Summary']
 
 export default ({ activeScreen }) => (
   <div className="tabs is-toggle is-fullwidth">

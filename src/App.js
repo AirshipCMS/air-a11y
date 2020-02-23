@@ -9,6 +9,7 @@ import './App.css';
 import { StateProvider } from './components/StateProvider'
 import { combinedReducer } from './reducers'
 import { initialMobilityAid } from './reducers/mobilityAid'
+import { initialMobilityAidStorage } from './reducers/mobilityAidStorage';
 import { initialSeatPreferences } from './reducers/seatPreferences'
 import { initialSeatTransfer } from './reducers/seatTransfer';
 import { initialNeeds } from './reducers/typeOfNeeds';
@@ -18,6 +19,7 @@ import SeatPreferences from './screens/SeatPreferences'
 import TypeOfNeeds from './screens/TypeOfNeeds'
 import SeatTransfer from './screens/SeatTransfer'
 import MobilityAid from './screens/MobilityAid';
+import MobilityAidStorage from './screens/MobilityAidStorage';
 import Summary from './screens/Summary';
 import FlightSearch from './screens/FlightSearch'
 
@@ -25,6 +27,7 @@ function App() {
 
   const initialState = {
     mobilityAid: initialMobilityAid,
+    mobilityAidStorage: initialMobilityAidStorage,
     seatPreferences: initialSeatPreferences,
     seatTransfer: initialSeatTransfer,
     needs: initialNeeds
@@ -49,6 +52,9 @@ function App() {
             </Route>
             <Route path="/mobility-aid">
               <MobilityAid />
+            </Route>
+            <Route path="/mobility-aid-storage">
+              <MobilityAidStorage />
             </Route>
             <Route path="/summary">
               <Summary />

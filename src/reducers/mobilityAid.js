@@ -8,17 +8,7 @@ export const initialMobilityAid = {
   folded: {
     width: ''
   },
-  image: '',
-  WCBW: false,
-  WCBD: false,
-  WCLB: false,
-  lithium_number_of_grams: '',
-  foldable_back_rest: false,
-  removable_leg_rest: false,
-  removable_joystick: false,
-  cabin_storage: false,
-  additional_equipment: '',
-  instructions: ''
+  image: ''
 };
 
 const mobilityAidReducer = (state, action) => {
