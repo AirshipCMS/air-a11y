@@ -99,7 +99,7 @@ export default ({selections, navigation}) => {
   }
 
   return (
-    <div className="air-ally-assistant-container air-ally-assistant-speechselection-container">
+    <div className={`air-ally-assistant-container air-ally-assistant-speechselection-container ${listening ? 'air-ally-assistant-container-listening':''}`}>
       <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
         <span className="speech-button-text"><i class="fas fa-microphone"></i> Air Ally Assistant</span>
       </div>
