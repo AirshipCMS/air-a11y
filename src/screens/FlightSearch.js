@@ -123,10 +123,10 @@ export default () => {
                       </p>
                     </div>
                     {showTo ? <a onClick={() => {
-          setShowTo(false)
-          setTo('HNL')
-        }} className="panel-block is-active">
-          Honolulu, Hawaii HNL
+                      setShowTo(false)
+                      setTo('SFO')
+                    }} className="panel-block is-active">
+                      San Francisco, California SFO
                       </a> : null}
 
                     </div>
