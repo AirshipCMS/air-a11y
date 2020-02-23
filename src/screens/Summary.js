@@ -50,7 +50,7 @@ export default () => {
                       <div key={need.code} className="column">
                         <label className="fancy-checkbox">
                           <div className="fancy-checkbox-image">
-                            <div className="placeholder">pic</div>
+                            <i className={need.image}></i>
                           </div>
                           <div className="fancy-checkbox-text">
                             <p>{need.description}</p>

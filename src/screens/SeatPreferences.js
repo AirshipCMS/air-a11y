@@ -10,7 +10,7 @@ export default () => {
   const [{ seatPreferences }, dispatch] = useStateValue();
 
   const updateForm = (field, value) => {
-    dispatch({ type: 'SAVE_SEAT_PREFERENCE', form_field: { [field]: value }})
+    dispatch({ type: 'SAVE_SEAT_PREFERENCE', form_field: { [field]: value } })
   }
 
   return (
@@ -38,9 +38,9 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-wheelchair"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('movable_arm_rests', target.checked)} checked={seatPreferences.movable_arm_rests} type="checkbox" />
@@ -49,9 +49,9 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-braille"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input checked={seatPreferences.accessible_buttons} onChange={({ target }) => updateForm('accessible_buttons', target.checked)} type="checkbox" />
