@@ -10,15 +10,36 @@ export default () => {
   const [props] = useStateValue();
 
   return (
-    <div className="container" >
-      <div className="content">
+    <div className="app-container">
+      <div className="container" >
+        <section className="section header">
+          <div className="header-left">
+            <a className="logo-text" href="/">air a11y</a>
+          </div>
+          <div className="header-right">
+            <div className="logo-graphic">[logo]</div>
+          </div>
+        </section>
+
         <ProgressBar activeScreen='Summary' />
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h1>Summay</h1>
+              <p>Some stuff</p>
+            </div>
+          </div>
+        </section>
+
         <h1 className="title">Summary</h1>
         <section className="section">
           <div className="question-right">
 
             <h2>I need...
-                <span className="icon help-text-button help-text-button-off">
+              <span className="icon help-text-button help-text-button-off">
                 <i className="help far fa-question-circle"></i>
                 <i className="help fas fa-question-circle"></i>
               </span>
