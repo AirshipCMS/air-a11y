@@ -50,9 +50,7 @@ h1, h2, h3, h4, h5, h6, button, .button{
   border-top: 28px solid $black;
 }
 
-.svc-WCHC,
-.svc-BLIND,
-.svc-DEAF{
+.a11y-match{
   border: 5px solid $green;
 }
 
@@ -120,7 +118,7 @@ h1, h2, h3, h4, h5, h6, button, .button{
   flex-flow: row nowrap;
   align-items: flex-end;
   justify-content: flex-end;
-  padding-bottom: $medium-margin;
+  padding-bottom: 24px;
 }
 
 /* RULES */
@@ -172,23 +170,9 @@ a.logo-text{
 }
 
 .logo-graphic{
-  // border-bottom: none;
-
-  // &:hover{
-  //   border-bottom: none;
-  //   color: $darker-green;
-  // }
-
-  // &:active{
-  //   border-bottom: none;
-  //   color: $green;
-  // }
-
-  // &:focus{
-  //   border-bottom: none;
-  //   color: $green;
-
-  // }
+  img{
+    width: 118px;
+  }
 }
 
 /* NAV */
@@ -793,7 +777,8 @@ input[type='checkbox']{
 }
 
 .box-search-left{
-  flex: 0 0 70%;
+  flex: 1 0 50%;
+  padding-right: 30px;
 }
 
 .box-search-right{
@@ -801,21 +786,41 @@ input[type='checkbox']{
 }
 
 .box-search-place{
-
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
 }
 
 .box-search-to{
-
+  flex: 0 0 48%;
 }
 
 .box-search-from{
-
+  flex: 0 0 48%;
 }
 
+/* MESSY */
+
 .box-search-dates{
+  margin-top: $narrow-margin;
 
   .date-fields{
-    border: 1px solid red;
+    width: 100%;
+
+    .field{
+      .control{
+        .DateRangePicker{
+          width: 100%;
+
+          > div{
+
+            > div{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
   }
 }
 

@@ -73,14 +73,14 @@ export default () => {
     <div className="app-container">
       <div className="container">
         <Header />
-        
+
         <h1 className="title">Search Flights</h1>
 
         <section className="section">
           <div className="container">
-            <div class="box box-search">
+            <div class="box ">
+              <div className="box-search">
 
-              
               <div className="box-search-left">
                 <div className="box-search-place">
 
@@ -115,20 +115,22 @@ export default () => {
                           if (e.target.value.length === 2) {
                             setShowTo(true)
                           }
-                          setTo(e.target.value)}} />
+                          setTo(e.target.value)
+                        }} />
                         <span class="icon is-small is-left">
                           <i className="fas fa-plane-arrival"></i>
                         </span>
                       </p>
                     </div>
                     {showTo ? <a onClick={() => {
-                      setShowTo(false)
-                      setTo('HNL')
-                    }} className="panel-block is-active">
-                      Honolulu, Hawaii HNL
+          setShowTo(false)
+          setTo('HNL')
+        }} className="panel-block is-active">
+          Honolulu, Hawaii HNL
                       </a> : null}
-                  
 
+                    </div>
+                  </div>
                     <div className="box-search-dates">
                       <div className="date-fields">
                         <div class="field">
@@ -149,13 +151,12 @@ export default () => {
                           </p>
                         </div>
                       </div>
+
                     </div>
-                  </div>
 
-                  <div className="box-search-right">
-                    <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
-                  </div>
-
+                </div>
+                <div className="box-search-right">
+                  <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
                 </div>
 
               </div>
@@ -296,6 +297,9 @@ export default () => {
             }
           </div>
         </section>
+
+        <Footer />
+        
       </div>
     </div >
   )
