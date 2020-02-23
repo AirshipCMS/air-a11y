@@ -231,7 +231,9 @@ export default () => {
         <section className="section">
           <div className="question">
             <div className="question-left">
-              <SpeechInput setText={text => updateForm('instructions', text)}/>
+              <div className="help-text">
+                <SpeechInput setText={text => updateForm('instructions', text)}/>
+              </div>
             </div>
             <div className="question-right">
               <h2>Aircraft cargo storage</h2>
