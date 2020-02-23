@@ -43,7 +43,7 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests && 'fancy-checkbox-checked'}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -54,7 +54,7 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons && 'fancy-checkbox-checked'}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -171,7 +171,7 @@ export default () => {
 
               <button onClick={() => history.push('/type-of-needs')} className="button button-grey">Back</button>
               <button onClick={() => history.push('/seat-transfer')} className="button">Next</button>
-            
+
             </div>
           </div>
         </section>
