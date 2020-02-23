@@ -1,7 +1,7 @@
 import React, { useState, Children } from 'react'
-import ProgressBar from './components/ProgressBar'
+import ProgressBar from '../components/ProgressBar'
 import { useHistory } from 'react-router-dom'
-import wheelchairs from './wheelchairs.json'
+import wheelchairs from '../wheelchairs.json'
 
 export default () => {
   let history = useHistory()

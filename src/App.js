@@ -6,12 +6,12 @@ import {
 } from "react-router-dom";
 import 'bulma/css/bulma.css'
 import './App.css';
-import Home from './Home'
-import SeatPreferences from './SeatPreferences'
-import TypeOfNeeds from './TypeOfNeeds'
-import SeatTransfer from './SeatTransfer'
-import MobilityAid from './MobilityAid';
-import Summary from './Summary';
+import Home from './screens/Home'
+import SeatPreferences from './screens/SeatPreferences'
+import TypeOfNeeds from './screens/TypeOfNeeds'
+import SeatTransfer from './screens/SeatTransfer'
+import MobilityAid from './screens/MobilityAid';
+import Summary from './screens/Summary';
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
-import ProgressBar from './components/ProgressBar'
+import ProgressBar from '../components/ProgressBar'
 import { useHistory } from 'react-router-dom'
-import needs from './specialServices'
+import needs from '../specialServices'
 
 export default () => {
   let history = useHistory()
