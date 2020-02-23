@@ -6,13 +6,14 @@ import {
 } from "react-router-dom";
 import 'bulma/css/bulma.css'
 import './App.css';
-import Home from './Home'
-import SeatPreferences from './SeatPreferences'
-import TypeOfNeeds from './TypeOfNeeds'
-import SeatTransfer from './SeatTransfer'
-import MobilityAid from './MobilityAid';
-import FlightSearch from './FlightSearch'
 
+import Home from './screens/Home'
+import SeatPreferences from './screens/SeatPreferences'
+import TypeOfNeeds from './screens/TypeOfNeeds'
+import SeatTransfer from './screens/SeatTransfer'
+import MobilityAid from './screens/MobilityAid';
+import Summary from './screens/Summary';
+import FlightSearch from './screens/FlightSearch'
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route path="/mobility-aid">
             <MobilityAid />
+          </Route>
+          <Route path="/summary">
+            <Summary />
           </Route>
           <Route path="/search-flights">
             <FlightSearch />

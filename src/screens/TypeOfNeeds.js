@@ -1,7 +1,7 @@
 import React from 'react'
-import ProgressBar from './components/ProgressBar'
+import ProgressBar from '../components/ProgressBar'
 import { useHistory } from 'react-router-dom'
-import needs from './specialServices'
+import needs from '../specialServices'
 
 export default () => {
   let history = useHistory()
@@ -18,11 +18,10 @@ export default () => {
               {needs.map(need => (
                 <div key={needs.code} className="tile is-parent">
                   <article className="tile is-child box">
-                    <p className="title">{need.description}</p>
-                    <input type="checkbox" name={need.code} value={need.ocde} />
-                    <span className="icon">
-                      <i className="help far fa-question-circle"></i>
-                    </span>
+                    <label className="checkbox">
+                      <input type="checkbox" name={need.code} value={need.ocde}/>
+                      {need.description}
+                    </label>
                   </article>
                 </div>
               ))}
