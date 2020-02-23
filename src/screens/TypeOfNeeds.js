@@ -62,7 +62,7 @@ export default () => {
               <div className="columns fancy-checkboxes">
                 {specialServices.map(need => (
                   <div key={need.code} className="column is-one-third">
-                    <label className="fancy-checkbox">
+                    <label className={`fancy-checkbox ${needs[need.code] ? 'fancy-checkbox-checked':''}`}>
                       <div className="fancy-checkbox-image">
                         <div className="placeholder">pic</div>
                       </div>
@@ -76,23 +76,23 @@ export default () => {
 
                 {/* mocked */}
                 <div className="column is-one-third">
-                <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${needs.serviceAnimal ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" />
+                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} type="checkbox" name='serviceAnimal'/>
                       <p>Service animal</p>
                     </div>
                   </label>
                 </div>
                 <div className="column is-one-third">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${needs.other ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" />
+                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} type="checkbox" name='other'/>
                       <p>Other</p>
                     </div>
                   </label>

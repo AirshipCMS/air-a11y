@@ -38,7 +38,7 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests && 'fancy-checkbox-checked'}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -49,7 +49,7 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons && 'fancy-checkbox-checked'}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
