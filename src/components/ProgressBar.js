@@ -1,16 +1,29 @@
 import React from 'react'
-const pages = ['Needs', 'Seat+Location', 'Seat Transfer', 'Mobility Aid', 'Mobility Aid Storage', 'Summary']
+import { useHistory } from 'react-router-dom'
 
-export default ({ activeScreen }) => (
-  <div className="tabs is-toggle is-fullwidth">
-    <ul>
-      {pages.map(page => (
-        <li key={page} className={activeScreen === page ? "is-active" : ''}>
-          <a>
-            <span>{page}</span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </div>
-)
+const pages = [
+  ['Needs','/type-of-needs'],
+  ['Seat+Location', '/seat+location'],
+  ['Seat Transfer', '/seat-transfer'],
+  ['Mobility Aid', '/mobility-aid'],
+  ['Mobility Aid Storage', '/mobility-aid-storage'],
+  ['Summary', '/summary']
+]
+
+export default ({ activeScreen }) => {
+  const history = useHistory()
+
+  return (
+    <div className="tabs is-toggle is-fullwidth">
+      <ul>
+        {pages.map(([name, path]) => (
+          <li key={name} onClick={() => history.push(path)} className={activeScreen === name ? "is-active" : ''}>
+            <a>
+              <span>{name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
