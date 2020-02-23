@@ -16,8 +16,8 @@ const offersXmlToJson = response => [...response.getElementsByTagName('Offer')].
   },
   service: {
     WCHC: Math.random() < .4,
-    BLIND: Math.random() < .1,
-    DEAF: Math.random() < .1,
+    BLIND: Math.random() < .9,
+    DEAF: Math.random() < .9,
   },
   segments: [...response.getElementsByTagName('OriginDest')].map(od => ({
     origin: od.getElementsByTagName('OriginCode')[0].textContent,
