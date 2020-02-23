@@ -28,24 +28,6 @@ export default () => {
           </div>
         </section>
         <section className="section">
-          <div className="question">
-            <div className="question-left">
-              <div className="help-text" id="help-question1">
-                <p className="small">Small text here.</p>
-              </div>
-            </div>
-            <div className="question-right">
-              <h2>Some subtitle 
-                <span className="icon help-text-button help-text-button-off" for="help-question1">
-                  <i className="help far fa-question-circle"></i>
-                  <i className="help fas fa-question-circle"></i>
-                </span>
-              </h2>
-              <p>Some text here.</p>
-            </div>
-          </div>
-        </section>
-        <section className="section">
           <div className="footer">
             <div className="footer-left">
 

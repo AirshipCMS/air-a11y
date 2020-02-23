@@ -65,7 +65,7 @@ h2, h3, h4, h5, h6, button, .button{
   padding: 15px 0;
   background-color: transparent;
   border-top: 6px solid $black;
-  margin: $medium-margin 0 30px;
+  margin: $large-margin 0 30px;
 
   p{
     font-weight: 700;
@@ -139,6 +139,16 @@ button + p{
 }
 
 .question-right{
+  
+  .column{
+    display: flex;
+    flex-flow: row nowrap; /* desktop */
+    align-items: stretch;
+  }
+
+  .button{
+    width: 230px; /*desktop */
+  }
 }
 
 /* TYPOGRAPHY */
@@ -307,4 +317,51 @@ i.help{
   margin-bottom: 0;
   display: inline-block;
   transform: translateY(-1px);
+}
+
+.placeholder{
+  background-color: pink;
+}
+
+.fancy-checkboxes{
+  margin-top: $small-margin*0.5;
+}
+
+.fancy-checkbox{
+  border: 2px solid $black;
+  border-bottom: 6px solid $black;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap; /* desktop */
+  cursor: pointer;
+
+  &:hover{
+    border-color: $green;
+
+    .fancy-checkbox-text{
+      border-top: 2px solid $green;
+    }
+  }
+
+  &:focus{
+    border-color: $green;
+    box-shadow: 0 0 0 4px rgba(131, 191,55, 0.25);
+
+    .fancy-checkbox-text{
+      border-top: 2px solid $green;
+    }
+  }
+}
+
+.fancy-checkbox-image{
+  padding: $small-margin;
+}
+
+.fancy-checkbox-text{
+  border-top: 2px solid $black;
+  padding: $small-margin;
+}
+
+.radio-group{
+  margin-top: $small-margin*0.5;
 }
