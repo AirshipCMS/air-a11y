@@ -70,11 +70,11 @@ export default () => {
     .every(([k, _]) => service[k])
 
   return (
-    <div className="app-container">
+    <div className="app-container app-container-search">
       <div className="container">
         <Header />
 
-        <h1 className="title">Search Flights</h1>
+        <h1 className="search-flights">Search Flights</h1>
 
         <section className="section">
           <div className="container">
@@ -251,15 +251,15 @@ export default () => {
         </section>
         <section className="section">
           <div className="container">
-            {results.length > 0 ? <h1 className="title">Results</h1> : null}
+            {/* {results.length > 0 ? <p className="search-result">Results</p> : null} */}
             {
               results.map(({ price: { base }, service, segments }, i) =>
-                <div key={i}>
+                <div className="box search-result" key={i}>
                   <div className="segments">
                     {
                       segments.map(({ origin, destination }, k) =>
                         <div className={
-                          `box segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
+                          `segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
                         }>
                           <article className="media">
                             <div className="media-left">
