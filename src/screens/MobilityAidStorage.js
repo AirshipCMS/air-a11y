@@ -138,67 +138,38 @@ export default () => {
         </section>
 
         <section className="section">
-          <div className="container">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h2>For Wheelchairs</h2>
+              <div className="checkbox-group">
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.foldable_back_rest} type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
+                  <p>My wheelchair’s back rest folds down.</p>
+                </label>
+              </div>
+              {mobilityAidStorage.foldable_back_rest ? <label>
+                <p>Fold lever location:</p>
+                <input className="input" type="text" />
+              </label> : null}
+              <div className="checkbox-group">
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.removable_leg_rest} type="checkbox" name='removable_leg_rest' onChange={({ target }) => updateForm('removable_leg_rest', target.checked)} />
+                  <p>My wheelchair’s leg rest can be lowered or removed.</p>
+                </label>
+              </div>
 
-            <div className="container">
-              <h2>Batteries (if applicable):</h2>
-              <div className="tile is-ancestor">
-                <div className="tile is-parent">
-                  <article className="tile is-child box">
-                    <label className="checkbox">
-                      <input value={mobilityAidStorage.WCBW} onChange={({ target }) => updateForm('WCBW', target.checked)} type="checkbox" name='WCBW' />
-                      Wet cell / acid (spillable)
-                    </label>
-                  </article>
-                </div>
-                <div className="tile is-parent">
-                  <article className="tile is-child box">
-                    <label className="checkbox">
-                      <input value={mobilityAidStorage.WCBD} onChange={({ target }) => updateForm('WCBD', target.checked)} type="checkbox" name='WCBD' />
-                      Dry cell / gel (non-spillable)
-                    </label>
-                  </article>
-                </div>
-                <div className="tile is-parent">
-                  <article className="tile is-child box">
-                    <label className="checkbox">
-                      <input value={mobilityAidStorage.WCLB} onChange={({ target }) => updateForm('WCLB', target.checked)} type="checkbox" name='WCLB' onChange={({ target }) => updateForm('WCLB', target.checked)} />
-                      Lithium (number of grams):
-                    </label>
-                  </article>
-                </div>
-                {mobilityAidStorage.WCLB ? <div>
-                  <input value={mobilityAidStorage.lithium_number_of_grams} onChange={({ target }) => updateForm('lithium_number_of_grams', target.checked)} className="input" type="text" />
-                </div> : null}
-              </div>
+              {mobilityAidStorage.removable_leg_rest ? <label>
+                <p>Instructions:</p>
+                <textarea className="textarea"></textarea>
+              </label> : null}
             </div>
-            <div className="container">
-              <h1>For Wheelchairs</h1>
-              <div className="tile is-ancestor">
-                <div className="tile is-parent">
-                  <article className="tile is-child box">
-                    <label className="checkbox">
-                      <input value={mobilityAidStorage.foldable_back_rest} type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
-                      My wheelchair’s back rest folds down. Fold lever location:
-                    </label>
-                    {mobilityAidStorage.foldable_back_rest ? <div>
-                      <input className="input" type="text" />
-                    </div> : null}
-                  </article>
-                </div>
-                <div className="tile is-parent">
-                  <article className="tile is-child box">
-                    <label className="checkbox">
-                      <input value={mobilityAidStorage.removable_leg_rest} type="checkbox" name='removable_leg_rest' onChange={({ target }) => updateForm('removable_leg_rest', target.checked)} />
-                      My wheelchair’s leg rest can be lowered or removed. Instructions:
-                    </label>
-                    {mobilityAidStorage.removable_leg_rest ? <div>
-                      <textarea className="textarea"></textarea>
-                    </div> : null}
-                  </article>
-                </div>
-              </div>
-            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
             <div className="content">
               <h1>For powerchairs:</h1>
               <div className="tile is-parent">
