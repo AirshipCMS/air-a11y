@@ -12,12 +12,14 @@ import { initialMobilityAid } from './reducers/mobilityAid'
 import { initialSeatPreferences } from './reducers/seatPreferences'
 import { initialSeatTransfer } from './reducers/seatTransfer';
 import { initialNeeds } from './reducers/typeOfNeeds';
+
 import Home from './screens/Home'
 import SeatPreferences from './screens/SeatPreferences'
 import TypeOfNeeds from './screens/TypeOfNeeds'
 import SeatTransfer from './screens/SeatTransfer'
 import MobilityAid from './screens/MobilityAid';
 import Summary from './screens/Summary';
+import FlightSearch from './screens/FlightSearch'
 
 function App() {
 
@@ -50,6 +52,9 @@ function App() {
             </Route>
             <Route path="/summary">
               <Summary />
+            </Route>
+            <Route path="/search-flights">
+              <FlightSearch />
             </Route>
           </Switch>
         </div>
