@@ -187,7 +187,11 @@ export default () => {
           <h1>Additional equipment</h1>
           <p>{props.mobilityAidStorage.additional_equipment}</p>
         </div> : null}
-
+        
+        <section className="section">
+          <button onClick={() => history.push('/mobility-aid-storage')} className="button button-grey">Back</button>
+          <button onClick={() => history.push('/search-flights')} className="button">Search for Flights</button>
+        </section>
         <Footer />
 
       </div>
