@@ -95,11 +95,10 @@ export default ({selections, navigation}) => {
   }
 
   return (
+    
     <div className="speech-button" onClick={listen}>
-      <div className="tile">
-        <h1><i className="fa fa-microphone"></i></h1>
-      </div>
-      <div style={{ backgroundColor: '#E0E0E0'   }} className="DEBUG-ONLY">{debug}</div>
+      <span className="speech-button-text"><i class="fas fa-microphone"></i> Air Ally Assistant</span>
+      <div className="DEBUG-ONLY"><span>{debug}</span></div>
     </div>
   )
 }

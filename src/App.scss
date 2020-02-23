@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:700|Montserrat:700|Muli:400,800&display=swap');
 
 .placeholder{
-  background-color: pink;
+  background-color: #DDDDDD;
+  height: 100px;
 }
 
 $green: #83BF37;
@@ -9,12 +10,17 @@ $darker-green: #537d2e;
 $black: #222222;
 $light-green: #c7ed98;
 
+$narrow-margin: 12px;
 $small-margin: 20px;
 $medium-margin: 40px;
 $large-margin: 80px;
 
 $button-font-size: 19px;
 $small-font-size: 15px;
+
+$button-large: 205px;
+$button-xlarge: 245px;
+$button-xxlarge: 284px;
 
 @mixin montserrat-bold{
   font-family: 'Montserrat', sans-serif;
@@ -72,6 +78,10 @@ h1, h2, h3, h4, h5, h6, button, .button{
 
   p{
     font-weight: 700;
+
+    a{
+      border-bottom: none;
+    }
   }
 }
 
@@ -240,16 +250,42 @@ a.logo-text{
 }
 
 .question-right{
+
+  .columns{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    margin-left: 0;
+    margin-right: 0;
+  }
   
   .column{
+    padding: 0;
+    margin: 0;
     display: flex;
     flex-flow: row nowrap; /* desktop */
     align-items: stretch;
   }
 
+  .column.is-half{
+    flex: 0 0 49%;
+  }
+  
+  .column.is-one-third{
+    flex: 0 0 31.95%;
+  }
+
   .button{
-    width: 200px; /*desktop */
-    margin-top: $medium-margin;
+    width: $button-large;
+    margin-top: $large-margin;
+
+    @media only screen and (min-width: 1216px){
+      width: $button-xlarge;
+    }
+    
+    @media only screen and (min-width: 1408px){
+      width: $button-xxlarge;
+    }
   }
 }
 
@@ -277,7 +313,15 @@ a.logo-text{
 
 button + button,
 .button + .button{
-  margin-left: 10px;
+  margin-left: $narrow-margin;
+
+  @media only screen and (min-width: 1216px){
+    margin-left: $narrow-margin+3px; /* HACKY */
+  }
+  
+  @media only screen and (min-width: 1408px){
+    margin-left: $narrow-margin+5px; /* HACKY */
+  }
 }
 
 /* BUTTON GREY */
@@ -366,6 +410,75 @@ a:focus{
   }
 }
 
+// messy
+
+.speech-button{
+  margin-top: $small-margin*0.75;
+}
+
+.speech-button-text{
+  display: inline-block;
+  color: $black;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 8px;
+  border: 2px solid #CCCCCC;
+
+  &:hover{
+    color: $darker-green;
+    border-color: $green;
+  }
+  
+  &:focus{
+    outline: none;
+    color: $darker-green;
+    border-color: $green;
+    box-shadow: 0 0 0 4px rgba(131, 191,55, 0.25);
+  } 
+
+  .is-active &,
+  &:active,
+  &.active{
+    outline: none;
+    color: $black;
+    background-color: $green;
+    border-color: $green;
+  } 
+}
+
+// .speech-button-text{
+//   color: $black;
+//   font-weight: 700;
+//   cursor: pointer;
+//   padding-bottom: 2px;
+//   border-bottom: 4px solid #EEEEEE;
+
+//   &:hover{
+//     color: $darker-green;
+//     border-bottom: 4px solid rgba(131, 191,55, 0.25);
+//   }
+  
+//   &:focus{
+//     color: $darker-green;
+//     outline: none;
+//     border-bottom: 4px solid $green;
+//   } 
+// }
+
+// messy
+.DEBUG-ONLY{
+  margin-top: $small-margin;
+
+  span{
+    background-color: $light-green;
+    padding: $small-margin*0.5;
+    display: block;
+    color: $darker-green;
+    font-weight: 700;
+    font-size: $button-font-size;
+  }
+}
+
 p.intro{
   font-size: $button-font-size;
   font-weight: 700;
@@ -381,16 +494,16 @@ p.small{
   margin-right: 28px;
   margin-left: auto;
   margin-top: 8px;
-  width: 186px;
   border-top: 6px solid $green;
   padding-top: 10px;
+  width: $button-large;
 
   @media only screen and (min-width: 1216px){
-    width: 226px;
+    width: $button-xlarge;
   }
   
   @media only screen and (min-width: 1408px){
-    width: 266px;
+    width: $button-xxlarge;
   }
 }
 
@@ -451,6 +564,7 @@ i.help{
   display: flex;
   flex-flow: column nowrap; /* desktop */
   cursor: pointer;
+  margin-bottom: $small-margin*0.75;
 
   &:hover{
     border-color: $green;
@@ -480,26 +594,47 @@ i.help{
 
 .fancy-checkbox-image{
   padding: $small-margin;
+  background-color: #EEEEEE;
 }
 
 .fancy-checkbox-text{
   border-top: 2px solid $black;
-  padding: $small-margin;
-}
-
-/* RADIO */
-
-.radio-group{
-  margin-top: $small-margin*0.5;
-}
-
-.radio{
+  padding: $small-margin*0.75 $small-margin;
   display: flex;
   flex-flow: row nowrap;
   
   input{
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+
+  p{
+    font-weight: 700;
+    line-height: 1.2;
+  }
+}
+
+/* RADIO */
+
+.dimensions-group,
+.checkbox-group,
+.radio-group{
+  margin-top: $small-margin*0.5;
+}
+
+.checkbox-simple,
+.radio{
+  display: flex;
+  flex-flow: row nowrap;
+  
+  input[type='radio']{
     margin-right: 10px;
     margin-top: 11px;
+  }
+
+  input[type='checkbox']{
+    margin-right: 10px;
+    margin-top: 13px;
   }
 
   p{
@@ -507,6 +642,25 @@ i.help{
   }
 }
 
+
 .radio + .radio{
   margin-left: 0;
+}
+
+input[type='checkbox']{
+  width: 10px;
+  height: 10px;
+}
+
+.field{
+  font-size: 18px;
+
+  .label{
+    text-align: left;
+    font-weight: 400;
+  }
+
+  input{
+    font-size: 18px;
+  }
 }

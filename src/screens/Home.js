@@ -9,12 +9,13 @@ export default () => {
       <div className="container">
         <section className="section header">
           <div className="header-left">
-            <h1>air a11y</h1>
+            <a className="logo-text" href="/">air a11y</a>
           </div>
           <div className="header-right">
-            <div className="logo">[logo]</div>
+            <div className="logo-graphic">[logo]</div>
           </div>
         </section>
+
         <section className="section">
           <div className="question">
             <div className="question-left">

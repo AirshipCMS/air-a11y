@@ -13,27 +13,59 @@ export default () => {
   }
 
   return (
-    <div className="container" >
-      <div className="content">
-        <ProgressBar activeScreen='Mobility Aid Storage' />
-        <h1 className="title">Storing my mobility aid</h1>
+    <div className="app-container">
+      <div className="container" >
+        <section className="section header">
+          <div className="header-left">
+            <a className="logo-text" href="/">air a11y</a>
+          </div>
+          <div className="header-right">
+            <div className="logo-graphic">[logo]</div>
+          </div>
+        </section>
+
+        <ProgressBar activeScreen='Storage' />
+        
         <section className="section">
-          <div className="container">
-            <h1 className="title">Storing my mobility aid</h1>
-            <h2 className="title">Disassembled Dimensions:</h2>
-            <div className="control">
-              <label className="radio">
-                <input type="radio" name="aid_folds" />
-                My mobility aid folds
-              </label>
-              <label className="radio">
-                <input type="radio" name="aid_folds" />
-                My mobility aid does not fold
-              </label>
+          <div className="question">
+            <div className="question-left">
             </div>
-            <p>Please add folded/disassembled dimensions, in case it needs to be stored in the aircraft cargo (below the plane).</p>
-            <div className="columns">
-              <div className="column">
+            <div className="question-right">
+              <h1>Storing my mobility aid</h1>
+              <p>Please add folded/disassembled instructions, in case your mobility aid needs to be stored in the aircraft cargo below the plane.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h2>Mobility aid disassembly</h2>
+              <div className="radio-group">
+                <label className="radio">
+                  <input type="radio" name="aid_folds" />
+                  <p>My mobility aid folds</p>
+                </label>
+                <label className="radio">
+                  <input type="radio" name="aid_folds" />
+                  <p>My mobility aid does not fold</p>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+
+              <h2>Disassembled Dimensions</h2>
+              
+              <div className="dimensions-group">
                 <div className="field is-horizontal">
                   <div className="field-label is-normal">
                     <label className="label">Width</label>
@@ -72,28 +104,44 @@ export default () => {
                     </div>
                   </div>
                 </div>
-
-                <div className="field is-horizontal">
-                  <div className="field-label is-normal">
-                    <label className="label">Weight</label>
-                  </div>
-                  <div className="field-body">
-                    <div className="field">
-                      <p className="control">
-                        <input onChange={({ target }) => updateForm('weight', target.value)} value={mobilityAid.weight} className="input" placeholder="Weight" />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="column">
-                {mobilityAid.name ? <figure className="image is-128x128">
-                  <img src={mobilityAid.image} />
-                </figure> : null}
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h2>Batteries (if applicable)</h2>
+              <div className="checkbox-group">
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.WCBW} onChange={({ target }) => updateForm('WCBW', target.checked)} type="checkbox" name='WCBW' />
+                  <p>Wet cell / acid (spillable)</p>
+                </label>
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.WCBD} onChange={({ target }) => updateForm('WCBD', target.checked)} type="checkbox" name='WCBD' />
+                  <p>Dry cell / gel (non-spillable)</p>
+                </label>
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.WCLB} onChange={({ target }) => updateForm('WCLB', target.checked)} type="checkbox" name='WCLB' onChange={({ target }) => updateForm('WCLB', target.checked)} />
+                  <p>Lithium</p>
+                </label>
+              </div>
+              {mobilityAidStorage.WCLB ? <label>
+                <p>Weight (Grams)</p>
+                <input value={mobilityAidStorage.lithium_number_of_grams} onChange={({ target }) => updateForm('lithium_number_of_grams', target.checked)} className="input" type="text" />
+              </label> : null}
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="container">
+
             <div className="container">
-              <h1 className="title">Batteries (if applicable):</h1>
+              <h2>Batteries (if applicable):</h2>
               <div className="tile is-ancestor">
                 <div className="tile is-parent">
                   <article className="tile is-child box">

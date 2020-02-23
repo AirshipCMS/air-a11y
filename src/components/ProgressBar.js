@@ -2,10 +2,10 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 
 const pages = [
-  ['My Needs','/type-of-needs'],
+  ['My needs','/type-of-needs'],
   ['Seating', '/seat+location'],
   ['Assistance', '/seat-transfer'],
-  ['Mobility Aid', '/mobility-aid'],
+  ['Mobility aid', '/mobility-aid'],
   ['Storage', '/mobility-aid-storage'],
   ['Summary', '/summary']
 ]

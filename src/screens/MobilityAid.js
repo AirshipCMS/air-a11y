@@ -30,94 +30,175 @@ export default () => {
   }
 
   return (
-    <div className="container" >
-      <div className="content">
-        <ProgressBar activeScreen='Mobility Aid' />
-        <h1 className="title">About my Mobility Aid</h1>
-        {mobilityAid.name === null ? <section className="section">
-          <div className="container">
-            <h1 className="title">Tell us about your mobility aid</h1>
-            <div className="panel-block">
-              <p>Populates wheelchair name, and the dimensions into the fields below, then pulls in and shows an image.</p>
-              <p className="control has-icons-left">
-                <input onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Wheelchair Model" />
-                <span className="icon is-left">
-                  <i className="fas fa-search" aria-hidden="true"></i>
-                </span>
-              </p>
+    <div className="app-container">
+      <div className="container" >
+        <section className="section header">
+          <div className="header-left">
+            <a className="logo-text" href="/">air a11y</a>
+          </div>
+          <div className="header-right">
+            <div className="logo-graphic">[logo]</div>
+          </div>
+        </section>
+
+        <ProgressBar activeScreen='Mobility aid' />
+        
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
             </div>
-            {state.filteredChairs.map((chair, i) => (
-              <a onClick={selectChair(chair)} key={i} className="panel-block is-active">
-                {chair.name}
-              </a>
-            ))}
+            <div className="question-right">
+              <h1>My mobility aid</h1>
+            </div>
+          </div>
+        </section>
+
+        {mobilityAid.name === null ? <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h2>Find your mobility aid:
+                <span className="icon help-text-button help-text-button-off">
+                  <i className="help far fa-question-circle"></i>
+                  <i className="help fas fa-question-circle"></i>
+                </span>
+              </h2>
+
+              <div className="panel-block">
+                <p className="control has-icons-left">
+                  <input onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Make/Model" />
+                  <span className="icon is-left">
+                    <i className="fas fa-search" aria-hidden="true"></i>
+                  </span>
+                </p>
+              </div>
+              {state.filteredChairs.map((chair, i) => (
+                <a onClick={selectChair(chair)} key={i} className="panel-block is-active">
+                  {chair.name}
+                </a>
+              ))}
+
+              {/* <p>missing title and error states</p> */}
+
+            </div>
           </div>
         </section> : null}
+
         {!state.showStorage ? <section>
-          <h1 className="title">Dimensions</h1>
-          <div className="columns">
-            <div className="column">
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label">Width</label>
-                </div>
-                <div className="field-body">
-                  <div className="field">
-                    <p className="control">
-                      <input onChange={({ target }) => updateForm('width', target.value)} value={mobilityAid.width} className="input" placeholder="Width" />
-                    </p>
-                  </div>
-                </div>
-              </div>
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
 
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label">Height</label>
-                </div>
-                <div className="field-body">
-                  <div className="field">
-                    <p className="control">
-                      <input onChange={({ target }) => updateForm('height', target.value)} value={mobilityAid.height} className="input" placeholder="Height" />
-                    </p>
-                  </div>
-                </div>
-              </div>
+            <h2>Dimensions</h2>
 
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label">Length</label>
-                </div>
-                <div className="field-body">
-                  <div className="field">
-                    <p className="control">
-                      <input onChange={({ target }) => updateForm('length', target.value)} value={mobilityAid.length} className="input" placeholder="Length" />
-                    </p>
-                  </div>
-                </div>
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Name</label>
               </div>
-
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label">Weight</label>
-                </div>
-                <div className="field-body">
-                  <div className="field">
-                    <p className="control">
-                      <input onChange={({ target }) => updateForm('weight', target.value)} value={mobilityAid.weight} className="input" placeholder="Weight" />
-                    </p>
-                  </div>
+              <div className="field-body">
+                <div className="field">
+                  <p className="control">
+                    <input onChange={({ target }) => updateForm('name', target.value)} value={mobilityAid.name} className="input" placeholder="Name" />
+                  </p>
                 </div>
               </div>
             </div>
-            <div className="column">
+            
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Width</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <p className="control">
+                    <input onChange={({ target }) => updateForm('width', target.value)} value={mobilityAid.width} className="input" placeholder="Width" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Height</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <p className="control">
+                    <input onChange={({ target }) => updateForm('height', target.value)} value={mobilityAid.height} className="input" placeholder="Height" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Length</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <p className="control">
+                    <input onChange={({ target }) => updateForm('length', target.value)} value={mobilityAid.length} className="input" placeholder="Length" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="field is-horizontal">
+              <div className="field-label is-normal">
+                <label className="label">Weight</label>
+              </div>
+              <div className="field-body">
+                <div className="field">
+                  <p className="control">
+                    <input onChange={({ target }) => updateForm('weight', target.value)} value={mobilityAid.weight} className="input" placeholder="Weight" />
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mobility-aid-image">
               {mobilityAid.name ? <figure className="image is-128x128">
                 <img src={mobilityAid.image} />
               </figure> : null}
             </div>
+
+            
+            </div>
           </div>
         </section> : null}
-        <button onClick={() => history.push('/mobility-aid-storage')} className="button is-fullwidth">Button</button>
->>>>>>> origin/master
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+            <button onClick={() => history.push('/seat-transfer')} className="button button-grey">Back</button>
+            <button onClick={() => history.push('/mobility-aid-storage')} className="button">Next</button>
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="footer">
+            <div className="footer-left">
+            </div>
+            <div className="footer-right">
+              <div className="columns">
+                <div className="column">
+                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
+                </div>
+                <div className="column">
+                  <p className="small">2020 IATA Hackathon</p>
+                </div>
+                <div className="column">
+                  <p className="small">Seattle, WA</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div >
   )

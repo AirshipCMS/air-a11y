@@ -22,7 +22,7 @@ export default () => {
             <div className="logo-graphic">[logo]</div>
           </div>
         </section>
-        <ProgressBar activeScreen='Seat+Location' />
+        <ProgressBar activeScreen='Seating' />
         
         <section className="section">
           <div className="question">
@@ -42,7 +42,7 @@ export default () => {
               </h2>
 
               <div className="columns fancy-checkboxes">
-                <div className="column">
+                <div className="column is-half">
                   <label className="fancy-checkbox">
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
@@ -53,7 +53,7 @@ export default () => {
                     </div>
                   </label>
                 </div>
-                <div className="column">
+                <div className="column is-half">
                   <label className="fancy-checkbox">
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
