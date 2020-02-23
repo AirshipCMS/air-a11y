@@ -486,6 +486,10 @@ p.intro{
 
 p.small{
   font-size: $small-font-size;
+
+  .question-right &{
+    margin-bottom: $small-margin;
+  }
 }
 
 /* HELP TEXT */
