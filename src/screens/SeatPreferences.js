@@ -14,12 +14,12 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container">
-      <section className="section header">
+        <section className="section header">
           <div className="header-left">
-            <h1>air a11y</h1>
+            <a className="logo-text" href="/">air a11y</a>
           </div>
           <div className="header-right">
-            <div className="logo">[logo]</div>
+            <div className="logo-graphic">[logo]</div>
           </div>
         </section>
         <ProgressBar activeScreen='Seat+Location' />
@@ -32,14 +32,14 @@ export default () => {
               </div> */}
             </div>
             <div className="question-right">
-              <h2>Seat and Location
+              <h1>Seating</h1>
+
+              <h2>I need a seat...
                 <span className="icon help-text-button help-text-button-off">
                   <i className="help far fa-question-circle"></i>
                   <i className="help fas fa-question-circle"></i>
                 </span>
               </h2>
-
-              <p>I need a seat...</p>
 
               <div className="columns fancy-checkboxes">
                 <div className="column">
@@ -49,7 +49,7 @@ export default () => {
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('movable_arm_rests', target.checked)} value={seatPreferences.movable_arm_rests} type="checkbox" />
-                      <p>With movable arm rests</p>
+                      <p>with movable arm rests</p>
                     </div>
                   </label>
                 </div>
@@ -60,7 +60,7 @@ export default () => {
                     </div>
                     <div className="fancy-checkbox-text">
                       <input value={seatPreferences.accessible_buttons} onChange={({ target }) => updateForm('accessible_buttons', target.checked)} type="checkbox" />
-                      <p>Easily accessible call button, lights, A/C</p>
+                      <p>with easily accessible call button, lights, A/C</p>
                     </div>
                   </label>
                 </div>
@@ -153,7 +153,7 @@ export default () => {
               </h2>
 
               <p>Some text here</p>
-              
+
               <div className="radio-group">
                 <label className="radio">
                   <input onChange={({ target }) => updateForm('front_row_seat', 'required')} type="radio" name="front_row_seat" value="required" />
@@ -169,7 +169,7 @@ export default () => {
                 </label>
               </div>
 
-              <button onClick={() => history.push('/seat-transfer')} className="button button-grey">Back (Fix)</button>
+              <button onClick={() => history.push('/type-of-needs')} className="button button-grey">Back</button>
               <button onClick={() => history.push('/seat-transfer')} className="button">Next</button>
             
             </div>
