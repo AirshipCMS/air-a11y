@@ -81,7 +81,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} type="checkbox" name='serviceAnimal'/>
+                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} name='serviceAnimal'/>
                       <p>Service animal</p>
                     </div>
                   </label>
@@ -92,7 +92,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} type="checkbox" name='other'/>
+                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} name='other'/>
                       <p>Other</p>
                     </div>
                   </label>

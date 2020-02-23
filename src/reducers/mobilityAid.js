@@ -1,5 +1,5 @@
 export const initialMobilityAid = {
-  name: null,
+  name: '',
   width: '',
   height: '',
   length: '',
