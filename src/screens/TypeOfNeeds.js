@@ -1,13 +1,19 @@
 import React from 'react'
-import ProgressBar from '../components/ProgressBar'
 import { useHistory } from 'react-router-dom'
-import needs from '../specialServices'
+import ProgressBar from '../components/ProgressBar'
+import { useStateValue } from '../components/StateProvider'
+import specialServices from '../specialServices'
 
 export default () => {
+  const [{ needs }, dispatch] = useStateValue();
   let history = useHistory()
 
+  const updateForm = (field, value) => {
+    dispatch({ type: 'SAVE_NEEDS', form_field: { [field]: value }})
+  }
+
   return (
-    < div className="container" >
+    <div className="container" >
       <div className="content">
         <ProgressBar activeScreen='Needs' />
         <h1 className="title">Type of Needs</h1>
@@ -15,11 +21,11 @@ export default () => {
           <div className="container">
             <h1 className="title">Section</h1>
             <div className="tile is-ancestor">
-              {needs.map(need => (
-                <div key={needs.code} className="tile is-parent">
+              {specialServices.map(need => (
+                <div key={need.code} className="tile is-parent">
                   <article className="tile is-child box">
                     <label className="checkbox">
-                      <input type="checkbox" name={need.code} value={need.ocde}/>
+                      <input checked={needs[need.code]} onChange={({ target }) => updateForm(need.code, target.checked)} type="checkbox" name={need.code} />
                       {need.description}
                     </label>
                   </article>
@@ -30,6 +36,6 @@ export default () => {
         </section>
         <button onClick={() => history.push('/seat+location')} className="button is-fullwidth">Button</button>
       </div>
-    </div >
+    </div>
   )
 }
