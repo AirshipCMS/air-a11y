@@ -41,7 +41,7 @@ export default () => {
   headers.append("Authorization-Key", process.env.IATA_AUTH_KEY);
 
   const searchFlights = () =>
-  // PRODUCTION
+    // PRODUCTION
     // fetch("http://iata.api.mashery.com/athena/ndc192api", {
     //   method: 'POST',
     //   headers,
@@ -53,17 +53,17 @@ export default () => {
     // .then(res => setResults(res))
     // .catch(console.error)
 
-  // DEMO
+    // DEMO
     fetch("/api/search.xml")
-    .then(res => res.text())
-    .then(str => (new window.DOMParser()).parseFromString(str,"text/xml"))
-    .then(offersXmlToJson)
-    .then(res => setResults(res))
-    .catch(console.error)
+      .then(res => res.text())
+      .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+      .then(offersXmlToJson)
+      .then(res => setResults(res))
+      .catch(console.error)
 
   const matchesPrefs = service => Object.entries(needs)
-    .filter(([_,v]) => v)
-    .every(([k,_]) => service[k])
+    .filter(([_, v]) => v)
+    .every(([k, _]) => service[k])
 
   return (
     <div className="container">
@@ -71,79 +71,183 @@ export default () => {
         <h1 className="title">Search Flights</h1>
         <section className="section">
           <div className="container">
-            <div className="tile is-ancestor">
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-plane-departure"></i>
-                  </span>
-                </p>
-              </div>
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)}/>
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-plane-arrival"></i>
-                  </span>
-                </p>
-              </div>
+            <div class="box">
+              <article class="media">
+                <div className="columns">
+
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
+                        <span class="icon is-small is-left">
+                          <i className="fas fa-plane-departure"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
+                        <span class="icon is-small is-left">
+                          <i className="fas fa-plane-arrival"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <DateRangePicker
+                          startDate={startDate} // momentPropTypes.momentObj or null,
+                          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                          endDate={endDate} // momentPropTypes.momentObj or null,
+                          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                          onDatesChange={({ startDate, endDate }) => {
+                            setStartDate(startDate)
+                            setEndDate(endDate)
+                          }} // PropTypes.func.isRequired,
+                          focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                          onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                          initialVisibleMonth={() => moment()} // PropTypes.func or null,
+                        />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
         <section className="section">
-          <div className="container">
-            <div className="tile is-ancestor">
-              <div className="field">
-                <p className="title has-icons-left">
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-calendar-day"></i>
-                  </span>
-                  Date
-                </p>
-
-                <DateRangePicker
-                  startDate={startDate} // momentPropTypes.momentObj or null,
-  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={endDate} // momentPropTypes.momentObj or null,
-  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                    onDatesChange={({ startDate, endDate }) => {
-                      setStartDate(startDate)
-                      setEndDate(endDate)
-                    }} // PropTypes.func.isRequired,
-                  focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-                  initialVisibleMonth={() => moment()} // PropTypes.func or null,
-                />
-
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section">
-          <div className="container">
-            <h1 className="title">Results</h1>
-            {
-              results.map(({price: { base }, service, segments}, i) =>
-                <div className={
-                  `tile ${service.WCHC && 'svc-WCHC'} ${service.BLIND && 'svc-BLIND'} ${service.DEAF && 'svc-DEAF'} ${matchesPrefs(service) && 'a11y-match'}`
-                } key={i}>
-                  <p className="price">{base}</p>
-                  <p className="service">
-                    {service.WCHC && 'WCHC'}
-                    {service.BLIND && 'BLIND'}
-                    {service.DEAF && 'DEAF'}
-                  </p>
-                  <div className="segments">
-                  {
-                    segments.map(({ origin, destination }, k) =>
-                      <div className="segment" key={k}>
-                        <p className="origin">{origin}</p>
-                        <p className="destination">{destination}</p>
+          <div className="columns">
+            <div className="level">
+              <div className="level-right">
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Stops</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
                       </div>
-                    )
-                  }
+                    </div>
+                  </div>
+                </div>
+
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Airlines</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Price</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Times</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container">
+            {results.length > 0 ? <h1 className="title">Results</h1> : null}
+            {
+              results.map(({ price: { base }, service, segments }, i) =>
+                <div key={i}>
+                  <div className="segments">
+                    {
+                      segments.map(({ origin, destination }, k) =>
+                        <div className={
+                          `box segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
+                        }>
+                          <article className="media">
+                            <div className="media-left">
+                              <figure className="image is-64x64">
+                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                              </figure>
+                            </div>
+                            <div className="media-content">
+                              <div className="content">
+                                <div class="columns">
+                                  <div class="column">
+                                    <p className="">7:45am - 6:00pm</p>
+                                    <p>Airline</p>
+                                  </div>
+                                  <div class="column">
+                                    <p>6h 15m</p>
+                                    <p className="">{origin}-{destination}</p>
+                                  </div>
+                                  <div class="column">
+                                    <p className="">Nonstop</p>
+                                  </div>
+                                  <div class="column">
+                                    <p className="price">${base}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               )
@@ -160,60 +264,60 @@ export default () => {
 
 const requestXML = (startDate, endDate, from, to) => `<?xml version="1.0" encoding="UTF-8"?>
 <IATA_AirShoppingRQ xmlns="http://www.iata.org/IATA/2015/00/2019.2/IATA_AirShoppingRQ">
-    <MessageDoc>
-        <RefVersionNumber>1.0</RefVersionNumber>
-    </MessageDoc>
-    <Party>
-        <Participant>
+        <MessageDoc>
+          <RefVersionNumber>1.0</RefVersionNumber>
+        </MessageDoc>
+        <Party>
+          <Participant>
             <Aggregator>
-                <AggregatorID>88888888</AggregatorID>
-                <Name>JR TECHNOLOGIES</Name>
+              <AggregatorID>88888888</AggregatorID>
+              <Name>JR TECHNOLOGIES</Name>
             </Aggregator>
-        </Participant>
-        <Sender>
+          </Participant>
+          <Sender>
             <TravelAgency>
-                <AgencyID>9A</AgencyID>
-                <IATA_Number>12312312</IATA_Number>
-                <Name>Gods Travel</Name>
+              <AgencyID>9A</AgencyID>
+              <IATA_Number>12312312</IATA_Number>
+              <Name>Gods Travel</Name>
             </TravelAgency>
-        </Sender>
-    </Party>
-    <PayloadAttributes>
-        <EchoTokenText>a14cce97-c859-476d-b383-e08111dd9e0f</EchoTokenText>
-        <Timestamp>2001-12-17T09:30:47+05:00</Timestamp>
-        <TrxID>transaction${Date.now().toString().substr(0,3)}</TrxID>
-        <VersionNumber>2019.2</VersionNumber>
-    </PayloadAttributes>
+          </Sender>
+        </Party>
+        <PayloadAttributes>
+          <EchoTokenText>a14cce97-c859-476d-b383-e08111dd9e0f</EchoTokenText>
+          <Timestamp>2001-12-17T09:30:47+05:00</Timestamp>
+          <TrxID>transaction${Date.now().toString().substr(0, 3)}</TrxID>
+          <VersionNumber>2019.2</VersionNumber>
+        </PayloadAttributes>
 
-    <Request>
-        <FlightCriteria>
+        <Request>
+          <FlightCriteria>
             <OriginDestCriteria>
-                <DestArrivalCriteria>
-                    <IATA_LocationCode>${to}</IATA_LocationCode>
-                </DestArrivalCriteria>
-                <OriginDepCriteria>
-                    <Date>${startDate.format("YYYY-MM-DD")}</Date>
-                    <IATA_LocationCode>${from}</IATA_LocationCode>
-                </OriginDepCriteria>
+              <DestArrivalCriteria>
+                <IATA_LocationCode>${to}</IATA_LocationCode>
+              </DestArrivalCriteria>
+              <OriginDepCriteria>
+                <Date>${startDate.format("YYYY-MM-DD")}</Date>
+                <IATA_LocationCode>${from}</IATA_LocationCode>
+              </OriginDepCriteria>
             </OriginDestCriteria>
             <OriginDestCriteria>
-                <DestArrivalCriteria>
-                    <IATA_LocationCode>${from}</IATA_LocationCode>
-                </DestArrivalCriteria>
-                <OriginDepCriteria>
-                    <Date>${endDate.format("YYYY-MM-DD")}</Date>
-                    <IATA_LocationCode>${to}</IATA_LocationCode>
-                </OriginDepCriteria>
-                <PreferredCabinType>
-                    <CabinTypeCode>M</CabinTypeCode>
-                </PreferredCabinType>
+              <DestArrivalCriteria>
+                <IATA_LocationCode>${from}</IATA_LocationCode>
+              </DestArrivalCriteria>
+              <OriginDepCriteria>
+                <Date>${endDate.format("YYYY-MM-DD")}</Date>
+                <IATA_LocationCode>${to}</IATA_LocationCode>
+              </OriginDepCriteria>
+              <PreferredCabinType>
+                <CabinTypeCode>M</CabinTypeCode>
+              </PreferredCabinType>
             </OriginDestCriteria>
-        </FlightCriteria>
-        <Paxs>
+          </FlightCriteria>
+          <Paxs>
             <Pax>
-                <PaxID>Pax1</PaxID>
-                <PTC>ADT</PTC>
+              <PaxID>Pax1</PaxID>
+              <PTC>ADT</PTC>
             </Pax>
-        </Paxs>
-    </Request>
-</IATA_AirShoppingRQ>`
+          </Paxs>
+        </Request>
+      </IATA_AirShoppingRQ>`

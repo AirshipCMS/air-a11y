@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
@@ -12,14 +14,7 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Summary' />
 
@@ -135,37 +130,20 @@ export default () => {
               <h1>Storing my mobility aid</h1>
 
               <h2>Dimensions</h2>
-              <p>My mobility aid does not fold [hardcoded]</p>
+              <p>My mobility aid does not fold</p>
+              {/* <p>hardcoded.</p> */}
 
-              {props.mobilityAidStorage.cabinStorage ? <div>
-                <h2>Additional equipment</h2>
+              {props.mobilityAidStorage.cabinStorage ? <div className="content">
+                <h1>Additional equipment</h1>
                 <p>{props.mobilityAidStorage.additional_equipment}</p>
               </div> : null}
 
-              <p>[there's more stuff to render, though no need for presentation]</p>
+              {/* <p>[there's more stuff to render, though no need for presentation]</p> */}
             </div>
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Footer />
 
       </div>
     </div>

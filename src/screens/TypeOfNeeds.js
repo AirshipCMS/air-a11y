@@ -1,5 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import SpeechSelection from '../components/SpeechSelection'
 import { useStateValue } from '../components/StateProvider'
@@ -27,17 +29,10 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='My needs' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -47,7 +42,7 @@ export default () => {
             </div>
           </div>
         </section>
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -67,7 +62,7 @@ export default () => {
               <div className="columns fancy-checkboxes">
                 {specialServices.map(need => (
                   <div key={need.code} className="column is-one-third">
-                    <label className="fancy-checkbox">
+                    <label className={`fancy-checkbox ${needs[need.code] ? 'fancy-checkbox-checked':''}`}>
                       <div className="fancy-checkbox-image">
                         <div className="placeholder">pic</div>
                       </div>
@@ -78,32 +73,32 @@ export default () => {
                     </label>
                   </div>
                 ))}
-                
+
                 {/* mocked */}
                 <div className="column is-one-third">
-                <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${needs.serviceAnimal ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" />
+                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} name='serviceAnimal'/>
                       <p>Service animal</p>
                     </div>
                   </label>
                 </div>
                 <div className="column is-one-third">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${needs.other ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" />
+                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} name='other'/>
                       <p>Other</p>
                     </div>
                   </label>
                 </div>
                 <div className="column is-one-third">
-                  
+
                 </div>
                 {/* mocked */}
 
@@ -116,25 +111,7 @@ export default () => {
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Footer />
 
       </div>
     </div>

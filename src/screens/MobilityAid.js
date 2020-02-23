@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import ProgressBar from '../components/ProgressBar'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../components/StateProvider'
 import wheelchairs from '../wheelchairs.json'
@@ -32,17 +34,10 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Mobility aid' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -53,7 +48,7 @@ export default () => {
           </div>
         </section>
 
-        {mobilityAid.name === null ? <section className="section">
+        {mobilityAid.name === '' ? <section className="section">
           <div className="question">
             <div className="question-left">
             </div>
@@ -65,7 +60,7 @@ export default () => {
                 </span>
               </h2>
 
-              <div className="panel-block">
+              <div className="search panel-block">
                 <p className="control has-icons-left">
                   <input onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Make/Model" />
                   <span className="icon is-left">
@@ -73,6 +68,7 @@ export default () => {
                   </span>
                 </p>
               </div>
+
               {state.filteredChairs.map((chair, i) => (
                 <a onClick={selectChair(chair)} key={i} className="panel-block is-active">
                   {chair.name}
@@ -169,7 +165,7 @@ export default () => {
                 <img src={mobilityAid.image} />: null}
             </div> */}
 
-            
+
             </div>
           </div>
         </section> : null}
@@ -185,25 +181,8 @@ export default () => {
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Footer />
+
       </div>
     </div >
   )
