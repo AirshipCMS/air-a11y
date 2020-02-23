@@ -55,7 +55,8 @@ const selectChoice = (selections, navigation, speechText) => {
  * next <- /next/i /submit/i
  */
 export default ({selections, navigation}) => {
-  const [debug, setDebug] = useState('');
+  const [allyOutput, setAllyOutput] = useState('');
+  const [listening, setListening] = useState(false);
   const [speechConfig, setSpeechConfig] = useState(null);
   const [audioConfig, setAudioConfig] = useState(null);
 
@@ -70,8 +71,9 @@ export default ({selections, navigation}) => {
   let recognizer
   let localBuffer = ''
   const listen = () => {
+    setListening(true)
     localBuffer = ''
-    setDebug('Listening...')
+    setAllyOutput('Listening...')
     recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
     recognizer.recognizeOnceAsync(
       result => {
@@ -81,24 +83,27 @@ export default ({selections, navigation}) => {
         window.console.log(result, 'chose selections:', choices.map(c => c.name));
 
         if(choices){
-          setDebug(localBuffer + '\nchose selections: ' + choices.map(c => c.name))
+          setAllyOutput(localBuffer + '\nchose selections: ' + choices.map(c => c.name))
         }
 
         recognizer.close();
+        setListening(false)
       },
       err => {
-        setDebug(err.toString())
+        setAllyOutput(err.toString())
         window.console.log(err);
 
         recognizer.close();
+        setListening(false)
       });
   }
 
   return (
-    
-    <div className="speech-button" onClick={listen}>
-      <span className="speech-button-text"><i class="fas fa-microphone"></i> Air Ally Assistant</span>
-      <div className="DEBUG-ONLY"><span>{debug}</span></div>
+    <div className={`air-ally-assistant-container air-ally-assistant-speechselection-container ${listening ? 'air-ally-assistant-container-listening':''}`}>
+      <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
+        <span className="speech-button-text"><i class="fas fa-microphone"></i> Air Ally Assistant</span>
+      </div>
+      <div className="air-ally-assistant-output"><span>{allyOutput}</span></div>
     </div>
   )
 }

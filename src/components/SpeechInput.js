@@ -20,6 +20,7 @@ export default ({setText}) => {
   let recognizer
   let localBuffer = ''
   const listen = () => {
+    setListening(true)
     localBuffer = ''
     recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
     recognizer.recognizeOnceAsync(
@@ -29,22 +30,24 @@ export default ({setText}) => {
         window.console.log(result);
 
         recognizer.close();
+        setListening(false)
       },
       err => {
         setText(err.toString())
         window.console.log(err);
 
         recognizer.close();
+        setListening(false)
       })
   }
 
 
   return (
-    <div className="speech-button" onClick={listen}>
-      <div className="tile">
-        <h1><i className="fa fa-microphone"></i></h1>
-      </div>
-      <div style={{ backgroundColor: '#FAFAFA'   }} className="DEBUG-ONLY">
+    <div className={`air-ally-assistant-container air-ally-assistant-speechinput-container ${listening ? 'air-ally-assistant-container-listening':''}`}>
+      <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
+        <div className="tile">
+          <h1><i className="fa fa-microphone"></i></h1>
+        </div>
       </div>
     </div>
   )
