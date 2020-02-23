@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
@@ -12,14 +14,7 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Summary' />
 
@@ -192,6 +187,9 @@ export default () => {
           <h1>Additional equipment</h1>
           <p>{props.mobilityAidStorage.additional_equipment}</p>
         </div> : null}
+
+        <Footer />
+
       </div>
     </div>
   )

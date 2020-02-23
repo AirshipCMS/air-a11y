@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import SpeechInput from '../components/SpeechInput'
 import { useHistory } from 'react-router-dom'
@@ -15,14 +17,7 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Storage' />
 
@@ -218,7 +213,7 @@ export default () => {
                 <p className="small">Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).</p>
               </div>
 
-              {mobilityAidStorage.cabin_storage ? 
+              {mobilityAidStorage.cabin_storage ?
                 <label>
                   <p>I have the following medical equipment and/or wheelchair parts to store in the cabin closet (if space is available):</p>
                   <input value={mobilityAidStorage.additional_equipment} onChange={({ target }) => updateForm('additional_equipment', target.checked)} className="input" placeholder="" />
@@ -245,26 +240,8 @@ export default () => {
             </div>
           </div>
         </section>
-        
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+
+        <Footer />
       </div>
     </div >
   )

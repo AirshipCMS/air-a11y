@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import ProgressBar from '../components/ProgressBar'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../components/StateProvider'
 import wheelchairs from '../wheelchairs.json'
@@ -32,17 +34,10 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Mobility aid' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -105,7 +100,7 @@ export default () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="field is-horizontal">
               <div className="field-label is-normal">
                 <label className="label">Width</label>
@@ -164,7 +159,7 @@ export default () => {
               </figure> : null}
             </div>
 
-            
+
             </div>
           </div>
         </section> : null}
@@ -180,25 +175,8 @@ export default () => {
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Footer />
+
       </div>
     </div >
   )

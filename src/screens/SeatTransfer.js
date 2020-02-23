@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
@@ -14,17 +16,10 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container" >
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
 
         <ProgressBar activeScreen='Assistance' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -71,7 +66,7 @@ export default () => {
                   </label>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </section>
@@ -115,31 +110,13 @@ export default () => {
 
               <button onClick={() => history.push('/seat+location')} className="button button-grey">Back</button>
               <button onClick={() => history.push('/mobility-aid')} className="button">Next</button>
-              
+
             </div>
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        
+        <Footer />
+
       </div>
     </div >
   )
