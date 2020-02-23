@@ -158,7 +158,7 @@ export default () => {
             <div className="question-left">
             </div>
             <div className="question-right">
-              <h2>For Wheelchairs</h2>
+              <h2>For wheelchairs</h2>
               <div className="checkbox-group">
                 <label className="checkbox-simple">
                   <input value={mobilityAidStorage.foldable_back_rest} type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
@@ -185,51 +185,84 @@ export default () => {
         </section>
 
         <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1>For powerchairs:</h1>
-              <div className="tile is-parent">
-                <article className="tile is-child box">
-                  <label className="checkbox">
-                    <input value={mobilityAidStorage.removable_joystick} type="checkbox" name='removable_joystick' onChange={({ target }) => updateForm('removable_joystick', target.checked)} />
-                    My powerchair’s joystick can be removed. Instructions:
-                    </label>
-                  {mobilityAidStorage.removable_joystick ? <div>
-                    <textarea className="textarea"></textarea>
-                  </div> : null}
-                </article>
-              </div>
+          <div className="question">
+            <div className="question-left">
             </div>
-            <div className="box">
-              <div className="content">
-                <h1>Cabin Storage</h1>
-                <label className="checkbox">
-                  <input value={mobilityAidStorage.cabin_storage} type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
-                  Please store my mobility aid in the cabin closet so I can access it easily.
-Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).
+            <div className="question-right">
+              <h2>For powerchairs</h2>
+              <div className="checkbox-group">
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.removable_joystick} type="checkbox" name='removable_joystick' onChange={({ target }) => updateForm('removable_joystick', target.checked)} />
+                  <p>My powerchair’s joystick can be removed.</p>
                 </label>
               </div>
+              {mobilityAidStorage.removable_joystick ? <label>
+                <p>Instructions:</p>
+                <textarea className="textarea"></textarea>
+              </label> : null}
             </div>
+          </div>
+        </section>
 
-            {mobilityAidStorage.cabinStorage ? <div className="box">
-              <div className="content">
-                <h1>Additional equipment</h1>
-                <p>I have medical equipment and/or wheelchair parts to store in the cabin closet (if space is available):</p>
-                <input value={mobilityAidStorage.additional_equipment} onChange={({ target }) => updateForm('additional_equipment', target.checked)} className="input" placeholder="" />
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h2>Cabin storage</h2>
+              <div className="checkbox-group">
+                <label className="checkbox-simple">
+                  <input value={mobilityAidStorage.cabin_storage} type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
+                  <p>Please store my mobility aid in the cabin closet so I can access it easily.</p>
+                </label>
+                <p className="small">Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).</p>
               </div>
-            </div> : null}
 
-            <div className="box">
-              <div className="content">
-                <h1>Aircraft cargo storage</h1>
-                <SpeechInput setText={text => updateForm('instructions', text)}/>
-                <p>Any specific instructions for baggage handlers/ground staff?</p>
-                <textarea value={mobilityAidStorage.instructions} onChange={({ target }) => updateForm('instructions', target.checked)} className="textarea" placeholder=""></textarea>
+              {mobilityAidStorage.cabin_storage ? 
+                <label>
+                  <p>I have the following medical equipment and/or wheelchair parts to store in the cabin closet (if space is available):</p>
+                  <input value={mobilityAidStorage.additional_equipment} onChange={({ target }) => updateForm('additional_equipment', target.checked)} className="input" placeholder="" />
+                </label>: null}
+
+            </div>
+          </div>
+        </section>
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+              <SpeechInput setText={text => updateForm('instructions', text)}/>
+            </div>
+            <div className="question-right">
+              <h2>Aircraft cargo storage</h2>
+              <p>Any specific instructions for baggage handlers/ground staff?</p>
+              <textarea value={mobilityAidStorage.instructions} onChange={({ target }) => updateForm('instructions', target.checked)} className="textarea" placeholder=""></textarea>
+
+              <button onClick={() => history.push('/mobility-aid')} className="button button-grey">Back</button>
+              <button onClick={() => history.push('/summary')} className="button">Next</button>
+            </div>
+          </div>
+        </section>
+        
+        <section className="section">
+          <div className="footer">
+            <div className="footer-left">
+            </div>
+            <div className="footer-right">
+              <div className="columns">
+                <div className="column">
+                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
+                </div>
+                <div className="column">
+                  <p className="small">2020 IATA Hackathon</p>
+                </div>
+                <div className="column">
+                  <p className="small">Seattle, WA</p>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <button onClick={() => history.push('/summary')} className="button is-fullwidth">Button</button>
       </div>
     </div >
   )
