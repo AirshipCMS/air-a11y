@@ -1,5 +1,6 @@
-import React, { useState, Children } from 'react'
+import React from 'react'
 import ProgressBar from '../components/ProgressBar'
+import SpeechInput from '../components/SpeechInput'
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../components/StateProvider'
 
@@ -186,6 +187,7 @@ Note: aircrafts have limited space in the cabin closet for foldable wheelchairs 
             <div className="box">
               <div className="content">
                 <h1>Aircraft cargo storage</h1>
+                <SpeechInput setText={text => updateForm('instructions', text)}/>
                 <p>Any specific instructions for baggage handlers/ground staff?</p>
                 <textarea value={mobilityAidStorage.instructions} onChange={({ target }) => updateForm('instructions', target.checked)} className="textarea" placeholder=""></textarea>
               </div>

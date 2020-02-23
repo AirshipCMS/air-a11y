@@ -3,7 +3,7 @@ import 'react-dates/initialize'
 import moment from 'moment'
 import { DateRangePicker } from 'react-dates'
 import { useHistory } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import 'react-dates/lib/css/_datepicker.css'
 
 // xq .IATA_AirShoppingRS.Response.OffersGroup.CarrierOffers.Offer[].OfferItem.Price.BaseAmount

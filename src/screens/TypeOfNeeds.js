@@ -1,12 +1,24 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
+import SpeechSelection from '../components/SpeechSelection'
 import { useStateValue } from '../components/StateProvider'
 import specialServices from '../specialServices'
 
 export default () => {
   const [{ needs }, dispatch] = useStateValue();
   let history = useHistory()
+
+  const selections = specialServices.map(({ code, matches }) => ({
+    name: code,
+    matches,
+    onSelect: () => updateForm(code, true)
+  }))
+
+  const speechNavigation = {
+    back: () => history.push('/'),
+    next: () => history.push('/seat+location')
+  }
 
   const updateForm = (field, value) => {
     dispatch({ type: 'SAVE_NEEDS', form_field: { [field]: value }})
@@ -16,6 +28,7 @@ export default () => {
     <div className="container" >
       <div className="content">
         <ProgressBar activeScreen='Needs' />
+        <SpeechSelection navigation={speechNavigation} selections={selections}/>
         <h1 className="title">Type of Needs</h1>
         <section className="section">
           <div className="container">
