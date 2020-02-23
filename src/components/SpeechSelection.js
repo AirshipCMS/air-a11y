@@ -5,13 +5,13 @@ import { configureSpeechSDK } from '../utils/azure'
 const SpeechSDK = window.SpeechSDK
 
 const selectChoice = (selections, navigation, speechText) => {
-  const choice = selections.find(({ matches }) =>
+  const choices = selections.filter(({ matches }) =>
     matches.some(m => speechText.match(m))
   )
 
-  if(choice){
-    choice.onSelect()
-    return choice.name
+  if(choices.length){
+    choices.forEach(choice => choice.onSelect())
+    return choices
   }
 
   if( [/previous/i, /back/i, /back/].find(pattern => speechText.match(pattern)) ) {
@@ -21,7 +21,7 @@ const selectChoice = (selections, navigation, speechText) => {
     return navigation.next()
   }
 
-
+  return []
 }
 
 /*
@@ -77,11 +77,11 @@ export default ({selections, navigation}) => {
       result => {
         localBuffer += result.text
 
-        const choice = selectChoice(selections, navigation, localBuffer)
-        window.console.log(result, 'chose selection:', choice);
+        const choices = selectChoice(selections, navigation, localBuffer)
+        window.console.log(result, 'chose selections:', choices.map(c => c.name));
 
-        if(choice){
-          setDebug(localBuffer + '\nchose selection: ' + choice)
+        if(choices){
+          setDebug(localBuffer + '\nchose selections: ' + choices.map(c => c.name))
         }
 
         recognizer.close();
