@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
@@ -14,16 +16,9 @@ export default () => {
   return (
     <div className="app-container">
       <div className="container">
-        <section className="section header">
-          <div className="header-left">
-            <a className="logo-text" href="/">air a11y</a>
-          </div>
-          <div className="header-right">
-            <div className="logo-graphic">[logo]</div>
-          </div>
-        </section>
+        <Header />
         <ProgressBar activeScreen='Seating' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -43,7 +38,7 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests && 'fancy-checkbox-checked'}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.movable_arm_rests ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -54,7 +49,7 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons && 'fancy-checkbox-checked'}`}>
+                  <label className={`fancy-checkbox ${seatPreferences.accessible_buttons ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -176,25 +171,7 @@ export default () => {
           </div>
         </section>
 
-        <section className="section">
-          <div className="footer">
-            <div className="footer-left">
-            </div>
-            <div className="footer-right">
-              <div className="columns">
-                <div className="column">
-                  <p className="small">By <a href="#" target="_blank">PurelyFunctional.co</a></p>
-                </div>
-                <div className="column">
-                  <p className="small">2020 IATA Hackathon</p>
-                </div>
-                <div className="column">
-                  <p className="small">Seattle, WA</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <Footer />
 
       </div>
     </div >

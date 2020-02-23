@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
@@ -10,15 +12,29 @@ export default () => {
   const [props] = useStateValue();
 
   return (
-    <div className="container" >
-      <div className="content">
+    <div className="app-container">
+      <div className="container" >
+        <Header />
+
         <ProgressBar activeScreen='Summary' />
+
+        <section className="section">
+          <div className="question">
+            <div className="question-left">
+            </div>
+            <div className="question-right">
+              <h1>Summay</h1>
+              <p>Some stuff</p>
+            </div>
+          </div>
+        </section>
+
         <h1 className="title">Summary</h1>
         <section className="section">
           <div className="question-right">
 
             <h2>I need...
-                <span className="icon help-text-button help-text-button-off">
+              <span className="icon help-text-button help-text-button-off">
                 <i className="help far fa-question-circle"></i>
                 <i className="help fas fa-question-circle"></i>
               </span>
@@ -171,6 +187,9 @@ export default () => {
           <h1>Additional equipment</h1>
           <p>{props.mobilityAidStorage.additional_equipment}</p>
         </div> : null}
+
+        <Footer />
+
       </div>
     </div>
   )
