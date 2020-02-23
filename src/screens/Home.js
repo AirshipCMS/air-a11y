@@ -23,7 +23,7 @@ export default () => {
               <p className="intro">Create an accessibility profile that matches you to flights that meet your needs. Your profile can be shared with booking platforms and travel agencies.</p>
               <div className="hr hr-thin"></div>
               <button onClick={() => history.push('/type-of-needs')} className="button">Create profile</button>
-              <p>Turn on voice recognition with <button className="air-ally-button"><i class="fas fa-microphone"></i> Air Ally Assistant</button>.</p>
+              <p>Turn on voice recognition with <button className="text-button air-ally-button"><i class="fas fa-microphone"></i> Air Ally Assistant</button>.</p>
             </div>
           </div>
         </section>
