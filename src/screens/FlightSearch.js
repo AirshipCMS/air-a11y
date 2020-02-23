@@ -116,9 +116,9 @@ export default () => {
                     </div>
                     {showTo ? <a onClick={() => {
                       setShowTo(false)
-                      setTo('HNL')
+                      setTo('SFO')
                     }} className="panel-block is-active">
-                      Honolulu, Hawaii HNL
+                      San Francisco, CA SFO
                       </a> : null}
                   </div>
 
