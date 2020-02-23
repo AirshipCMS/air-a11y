@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import 'bulma/css/bulma.css'
-import './App.css';
+import './App.scss';
 import { StateProvider } from './components/StateProvider'
 import { combinedReducer } from './reducers'
 import { initialMobilityAid } from './reducers/mobilityAid'
