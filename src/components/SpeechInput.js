@@ -43,11 +43,11 @@ export default ({setText}) => {
 
 
   return (
-    <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
-      <div className="tile">
-        <h1><i className="fa fa-microphone"></i></h1>
-      </div>
-      <div style={{ backgroundColor: '#FAFAFA'   }} className="DEBUG-ONLY">
+    <div className="air-ally-assistant-container air-ally-assistant-speechinput-container">
+      <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
+        <div className="tile">
+          <h1><i className="fa fa-microphone"></i></h1>
+        </div>
       </div>
     </div>
   )
