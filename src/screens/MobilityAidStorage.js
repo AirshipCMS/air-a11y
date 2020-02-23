@@ -128,15 +128,15 @@ export default () => {
               <h2>Batteries (if applicable)</h2>
               <div className="checkbox-group">
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.WCBW} onChange={({ target }) => updateForm('WCBW', target.checked)} type="checkbox" name='WCBW' />
+                  <input checked={mobilityAidStorage.WCBW} onChange={({ target }) => updateForm('WCBW', target.checked)} type="checkbox" name='WCBW' />
                   <p>Wet cell / acid (spillable)</p>
                 </label>
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.WCBD} onChange={({ target }) => updateForm('WCBD', target.checked)} type="checkbox" name='WCBD' />
+                  <input checked={mobilityAidStorage.WCBD} onChange={({ target }) => updateForm('WCBD', target.checked)} type="checkbox" name='WCBD' />
                   <p>Dry cell / gel (non-spillable)</p>
                 </label>
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.WCLB} onChange={({ target }) => updateForm('WCLB', target.checked)} type="checkbox" name='WCLB' onChange={({ target }) => updateForm('WCLB', target.checked)} />
+                  <input checked={mobilityAidStorage.WCLB} onChange={({ target }) => updateForm('WCLB', target.checked)} type="checkbox" name='WCLB' onChange={({ target }) => updateForm('WCLB', target.checked)} />
                   <p>Lithium</p>
                 </label>
               </div>
@@ -156,7 +156,7 @@ export default () => {
               <h2>For wheelchairs</h2>
               <div className="checkbox-group">
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.foldable_back_rest} type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
+                  <input checked={mobilityAidStorage.foldable_back_rest} type="checkbox" name='foldable_back_rest' onChange={({ target }) => updateForm('foldable_back_rest', target.checked)} />
                   <p>My wheelchair’s back rest folds down.</p>
                 </label>
               </div>
@@ -166,7 +166,7 @@ export default () => {
               </label> : null}
               <div className="checkbox-group">
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.removable_leg_rest} type="checkbox" name='removable_leg_rest' onChange={({ target }) => updateForm('removable_leg_rest', target.checked)} />
+                  <input checked={mobilityAidStorage.removable_leg_rest} type="checkbox" name='removable_leg_rest' onChange={({ target }) => updateForm('removable_leg_rest', target.checked)} />
                   <p>My wheelchair’s leg rest can be lowered or removed.</p>
                 </label>
               </div>
@@ -187,7 +187,7 @@ export default () => {
               <h2>For powerchairs</h2>
               <div className="checkbox-group">
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.removable_joystick} type="checkbox" name='removable_joystick' onChange={({ target }) => updateForm('removable_joystick', target.checked)} />
+                  <input checked={mobilityAidStorage.removable_joystick} type="checkbox" name='removable_joystick' onChange={({ target }) => updateForm('removable_joystick', target.checked)} />
                   <p>My powerchair’s joystick can be removed.</p>
                 </label>
               </div>
@@ -207,7 +207,7 @@ export default () => {
               <h2>Cabin storage</h2>
               <div className="checkbox-group">
                 <label className="checkbox-simple">
-                  <input value={mobilityAidStorage.cabin_storage} type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
+                  <input checked={mobilityAidStorage.cabin_storage} type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
                   <p>Please store my mobility aid in the cabin closet so I can access it easily.</p>
                 </label>
                 <p className="small">Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).</p>

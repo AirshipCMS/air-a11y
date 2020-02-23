@@ -49,7 +49,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input onChange={({ target }) => updateForm('aisle_chair', target.checked)} value={seatTransfer.aisle_chair} type="checkbox" name="aisle_chair" />
+                      <input onChange={({ target }) => updateForm('aisle_chair', target.checked)} checked={seatTransfer.aisle_chair} type="checkbox" name="aisle_chair" />
                       <p>Request an aisle chair to help with transfer to my seat on the plane</p>
                     </div>
                   </label>
@@ -60,7 +60,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                    <input onChange={({ target }) => updateForm('seat_assistance', target.checked)} value={seatTransfer.seat_assistance} type="checkbox" name="seat_assistance" />
+                    <input onChange={({ target }) => updateForm('seat_assistance', target.checked)} checked={seatTransfer.seat_assistance} type="checkbox" name="seat_assistance" />
                     <p>Request additional assistance to transfer to my seat. An additional person/transporter will help you to your seat.</p>
                     </div>
                   </label>
@@ -90,7 +90,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input onChange={({ target }) => updateForm('request_wheelchair', target.checked)} value={seatTransfer.request_wheelchair} type="checkbox" name="request_wheelhcair" />
+                      <input onChange={({ target }) => updateForm('request_wheelchair', target.checked)} checked={seatTransfer.request_wheelchair} type="checkbox" name="request_wheelhcair" />
                       <p>Request a wheelchair to help me get to/from the aircraft.</p>
                     </div>
                   </label>
@@ -101,7 +101,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input onChange={({ target }) => updateForm('transportation_assistance', target.checked)} value={seatTransfer.transportation_assistance} type="checkbox" name="transportation_assistance" />
+                      <input onChange={({ target }) => updateForm('transportation_assistance', target.checked)} checked={seatTransfer.transportation_assistance} type="checkbox" name="transportation_assistance" />
                       <p>Request additional assistance to pull/push me in the wheelchair to and from the aircraft. An additional person/transporter will help you get to/from the aircraft.</p>
                     </div>
                   </label>

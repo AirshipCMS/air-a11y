@@ -43,7 +43,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input onChange={({ target }) => updateForm('movable_arm_rests', target.checked)} value={seatPreferences.movable_arm_rests} type="checkbox" />
+                      <input onChange={({ target }) => updateForm('movable_arm_rests', target.checked)} checked={seatPreferences.movable_arm_rests} type="checkbox" />
                       <p>with movable arm rests</p>
                     </div>
                   </label>
@@ -54,7 +54,7 @@ export default () => {
                       <div className="placeholder">pic</div>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input value={seatPreferences.accessible_buttons} onChange={({ target }) => updateForm('accessible_buttons', target.checked)} type="checkbox" />
+                      <input checked={seatPreferences.accessible_buttons} onChange={({ target }) => updateForm('accessible_buttons', target.checked)} type="checkbox" />
                       <p>with easily accessible call button, lights, A/C</p>
                     </div>
                   </label>
@@ -82,15 +82,15 @@ export default () => {
 
               <div className="radio-group">
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('aisle_seat', 'required')} type="radio" name="aisle_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'required')} checked={seatPreferences.aisle_seat == 'required'} type="radio" name="aisle_seat" value="required" />
                   <p>I need a seat next to the aisle</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('aisle_seat', 'preferred')} type="radio" name="aisle_seat" value="preferred" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'preferred')} checked={seatPreferences.aisle_seat == 'preferred'} type="radio" name="aisle_seat" value="preferred" />
                   <p>I prefer a seat next to the aisle</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('aisle_seat', 'not important')} type="radio" name="aisle_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'not important')} checked={seatPreferences.aisle_seat == 'not important'} type="radio" name="aisle_seat" value="not important" />
                   <p>Not important</p>
                 </label>
               </div>
@@ -118,15 +118,15 @@ export default () => {
 
               <div className="radio-group">
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} type="radio" name="bathroom_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} checked={seatPreferences.bathroom_seat == 'required'} type="radio" name="bathroom_seat" value="required" />
                   <p>I need a seat next to a bathroom</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('bathroom_seat', 'preferred')} type="radio" name="bathroom_seat" value="preferred" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'preferred')} checked={seatPreferences.bathroom_seat == 'preferred'} type="radio" name="bathroom_seat" value="preferred" />
                   <p>I prefer a seat next to a bathroom</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('bathroom_seat', 'not important')} type="radio" name="bathroom_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'not important')} checked={seatPreferences.bathroom_seat == 'not important'} type="radio" name="bathroom_seat" value="not important" />
                   <p>Not important</p>
                 </label>
               </div>
@@ -151,15 +151,15 @@ export default () => {
 
               <div className="radio-group">
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('front_row_seat', 'required')} type="radio" name="front_row_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'required')} checked={seatPreferences.front_row_seat == 'required'} type="radio" name="front_row_seat" value="required" />
                   <p>I need a seat in the front row (or row closest to the entrance)</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('front_row_seat', 'preferred')} type="radio" name="front_row_seat" value="preferred" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'preferred')} checked={seatPreferences.front_row_seat == 'preferred'} type="radio" name="front_row_seat" value="preferred" />
                   <p>I prefer a seat in the front row (or row closest to the entrance)</p>
                 </label>
                 <label className="radio">
-                  <input onChange={({ target }) => updateForm('front_row_seat', 'not important')} type="radio" name="front_row_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'not important')} checked={seatPreferences.front_row_seat == 'not important'} type="radio" name="front_row_seat" value="not important" />
                   <p>Not important</p>
                 </label>
               </div>

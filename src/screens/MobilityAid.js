@@ -48,7 +48,7 @@ export default () => {
           </div>
         </section>
 
-        {mobilityAid.name === null ? <section className="section">
+        {mobilityAid.name === '' ? <section className="section">
           <div className="question">
             <div className="question-left">
             </div>
