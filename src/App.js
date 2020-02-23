@@ -26,11 +26,11 @@ import FlightSearch from './screens/FlightSearch'
 function App() {
 
   const initialState = {
-    mobilityAid: initialMobilityAid,
-    mobilityAidStorage: initialMobilityAidStorage,
+    needs: initialNeeds,
     seatPreferences: initialSeatPreferences,
     seatTransfer: initialSeatTransfer,
-    needs: initialNeeds
+    mobilityAid: initialMobilityAid,
+    mobilityAidStorage: initialMobilityAidStorage
   }
 
   return (
