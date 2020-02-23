@@ -23,11 +23,11 @@ export default () => {
             <h2 className="title">Disassembled Dimensions:</h2>
             <div className="control">
               <label className="radio">
-                <input type="radio" name="aid_folds" />
+                <input type="radio" name="aid_folds" onChange={({ target }) => "@TODO"} checked={mobilityAid.folds}/>
                 My mobility aid folds
               </label>
               <label className="radio">
-                <input type="radio" name="aid_folds" />
+                <input type="radio" name="aid_folds" onChange={({ target }) => "@TODO"} checked={!mobilityAid.folds}/>
                 My mobility aid does not fold
               </label>
             </div>
@@ -85,6 +85,23 @@ export default () => {
                     </div>
                   </div>
                 </div>
+
+                { mobilityAid.folds &&
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label">Folded Width</label>
+                    </div>
+                    <div className="field-body">
+                      <div className="field">
+                        <p className="control">
+                          <input onChange={({ target }) => updateForm('folded-width', target.value)} value={mobilityAid.folded.width} className="input" placeholder="Folded Width" />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                }
+
+
               </div>
               <div className="column">
                 {mobilityAid.name ? <figure className="image is-128x128">

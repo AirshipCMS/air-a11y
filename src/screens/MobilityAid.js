@@ -117,7 +117,6 @@ export default () => {
           </div>
         </section> : null}
         <button onClick={() => history.push('/mobility-aid-storage')} className="button is-fullwidth">Button</button>
->>>>>>> origin/master
       </div>
     </div >
   )
