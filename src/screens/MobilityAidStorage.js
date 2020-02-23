@@ -25,7 +25,7 @@ export default () => {
         </section>
 
         <ProgressBar activeScreen='Storage' />
-        
+
         <section className="section">
           <div className="question">
             <div className="question-left">
@@ -45,11 +45,11 @@ export default () => {
               <h2>Mobility aid disassembly</h2>
               <div className="radio-group">
                 <label className="radio">
-                  <input type="radio" name="aid_folds" />
+                  <input type="radio" name="aid_folds" onChange={({ target }) => "@TODO"} checked={mobilityAid.folds} />
                   <p>My mobility aid folds</p>
                 </label>
                 <label className="radio">
-                  <input type="radio" name="aid_folds" />
+                  <input type="radio" name="aid_folds" onChange={({ target }) => "@TODO"} checked={!mobilityAid.folds} />
                   <p>My mobility aid does not fold</p>
                 </label>
               </div>
@@ -64,7 +64,7 @@ export default () => {
             <div className="question-right">
 
               <h2>Disassembled Dimensions</h2>
-              
+
               <div className="dimensions-group">
                 <div className="field is-horizontal">
                   <div className="field-label is-normal">
@@ -104,6 +104,22 @@ export default () => {
                     </div>
                   </div>
                 </div>
+
+                { mobilityAid.folds &&
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label">Folded Width</label>
+                    </div>
+                    <div className="field-body">
+                      <div className="field">
+                        <p className="control">
+                          <input onChange={({ target }) => updateForm('folded-width', target.value)} value={mobilityAid.folded.width} className="input" placeholder="Folded Width" />
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                }
+
               </div>
             </div>
           </div>
