@@ -1,9 +1,15 @@
 import React from 'react'
 import ProgressBar from '../components/ProgressBar'
+import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
 
 export default () => {
   let history = useHistory()
+  const [{ seatPreferences }, dispatch] = useStateValue();
+
+  const updateForm = (field, value) => {
+    dispatch({ type: 'SAVE_SEAT_PREFERENCE', form_field: { [field]: value }})
+  }
 
   return (
     < div className="container" >
@@ -17,7 +23,7 @@ export default () => {
               <div className="tile is-parent">
                 <article className="tile is-child box">
                   <p className="title">With movable arm rests</p>
-                  <input type="checkbox" />
+                  <input onChange={({ target }) => updateForm('movable_arm_rests', target.checked)} value={seatPreferences.movable_arm_rests} type="checkbox" />
                   <span className="icon">
                     <i className="help far fa-question-circle"></i>
                   </span>
@@ -26,7 +32,7 @@ export default () => {
               <div className="tile is-parent">
                 <article className="tile is-child box">
                   <p className="title">Easily accessible call button, lights, A/C</p>
-                  <input type="checkbox" />
+                  <input value={seatPreferences.accessible_buttons} onChange={({ target }) => updateForm('accessible_buttons', target.checked)} type="checkbox" />
                   <i className="help far fa-question-circle"></i>
                 </article>
               </div>
@@ -40,15 +46,15 @@ export default () => {
             <div className="columns">
               <div className="control column">
                 <label className="radio">
-                  <input type="radio" name="aisle_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'required')} type="radio" name="aisle_seat" value="required" />
                   I need a seat next to the aisle
                 </label>
                 <label className="radio">
-                  <input type="radio" name="aisle_seat" value="preferred" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'preferred')} type="radio" name="aisle_seat" value="preferred" />
                   I prefer a seat next to the aisle
                 </label>
                 <label className="radio">
-                  <input type="radio" name="aisle_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'not important')} type="radio" name="aisle_seat" value="not important" />
                   Not important
                 </label>
               </div>
@@ -65,15 +71,15 @@ export default () => {
             <div className="columns">
               <div className="control column">
                 <label className="radio">
-                  <input type="radio" name="bathroom_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} type="radio" name="bathroom_seat" value="required" />
                   I need a seat next to a bathroom
                 </label>
                 <label className="radio">
-                  <input type="radio" name="bathroom_seat" value="preffered" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'preferred')} type="radio" name="bathroom_seat" value="preferred" />
                   I prefer a seat next to a bathroom
                 </label>
                 <label className="radio">
-                  <input type="radio" name="bathroom_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'not important')} type="radio" name="bathroom_seat" value="not important" />
                   Not important
                  </label>
               </div>
@@ -90,15 +96,15 @@ export default () => {
             <div className="columns">
               <div className="control column">
                 <label className="radio">
-                  <input type="radio" name="front_row_seat" value="required" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'required')} type="radio" name="front_row_seat" value="required" />
                   I need a seat in the front row (or row closest to the entrance)
                 </label>
                 <label className="radio">
-                  <input type="radio" name="front_row_seat" value="preffered" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'preferred')} type="radio" name="front_row_seat" value="preferred" />
                   I prefer a seat in the front row (or row closest to the entrance)
                 </label>
                 <label className="radio">
-                  <input type="radio" name="front_row_seat" value="not important" />
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'not important')} type="radio" name="front_row_seat" value="not important" />
                   Not important
                 </label>
               </div>

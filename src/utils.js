@@ -1,0 +1,1 @@
+export const setBGImg = (source) => ({ backgroundImage: `url(${source})` })

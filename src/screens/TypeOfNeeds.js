@@ -1,16 +1,18 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 import ProgressBar from '../components/ProgressBar'
 import SpeechSelection from '../components/SpeechSelection'
-import { useHistory } from 'react-router-dom'
-import needs from '../specialServices'
+import { useStateValue } from '../components/StateProvider'
+import specialServices from '../specialServices'
 
 export default () => {
+  const [{ needs }, dispatch] = useStateValue();
   let history = useHistory()
 
-  const selections = needs.map(({ code, matches }) => ({
+  const selections = specialServices.map(({ code, matches }) => ({
     name: code,
     matches,
-    onSelect: () => console.log(`REPLACE ME\nsetTypeOfNeed ('${code}')`)
+    onSelect: () => updateForm(code, true)
   }))
 
   const speechNavigation = {
@@ -18,8 +20,12 @@ export default () => {
     next: () => history.push('/seat+location')
   }
 
+  const updateForm = (field, value) => {
+    dispatch({ type: 'SAVE_NEEDS', form_field: { [field]: value }})
+  }
+
   return (
-    < div className="container" >
+    <div className="container" >
       <div className="content">
         <ProgressBar activeScreen='Needs' />
         <SpeechSelection navigation={speechNavigation} selections={selections}/>
@@ -28,11 +34,11 @@ export default () => {
           <div className="container">
             <h1 className="title">Section</h1>
             <div className="tile is-ancestor">
-              {needs.map(need => (
-                <div key={needs.code} className="tile is-parent">
+              {specialServices.map(need => (
+                <div key={need.code} className="tile is-parent">
                   <article className="tile is-child box">
                     <label className="checkbox">
-                      <input type="checkbox" name={need.code} value={need.code} />
+                      <input checked={needs[need.code]} onChange={({ target }) => updateForm(need.code, target.checked)} type="checkbox" name={need.code} />
                       {need.description}
                     </label>
                   </article>
@@ -43,6 +49,6 @@ export default () => {
         </section>
         <button onClick={() => history.push('/seat+location')} className="button is-fullwidth">Button</button>
       </div>
-    </div >
+    </div>
   )
 }
