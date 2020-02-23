@@ -35,6 +35,8 @@ export default () => {
   const [startDate, setStartDate] = useState(moment());
   const [endDate, setEndDate] = useState(moment());
   const [focusedInput, setFocusedInput] = useState(null);
+  const [showFrom, setShowFrom] = useState()
+  const [showTo, setShowTo] = useState()
 
   const headers = new Headers();
   headers.append("Content-Type", "application/xml");
@@ -78,23 +80,46 @@ export default () => {
                   <div className="column">
                     <div class="field">
                       <p class="control has-icons-left has-icons-right">
-                        <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
+                        <input value={from} className="input" type="text" placeholder="From" onChange={e => {
+                          setFrom(e.target.value)
+                          if (e.target.value.length === 2) {
+                            setShowFrom(true)
+                          }
+                        }
+                        } />
                         <span class="icon is-small is-left">
                           <i className="fas fa-plane-departure"></i>
                         </span>
                       </p>
                     </div>
+                    {showFrom ? <a onClick={() => {
+                      setShowFrom(false)
+                      setFrom('SEA')
+                    }} className="panel-block is-active">
+                      Seattle, Washington SEA
+                      </a> : null}
                   </div>
 
                   <div className="column">
                     <div class="field">
                       <p class="control has-icons-left has-icons-right">
-                        <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
+                        <input value={to} className="input" type="text" placeholder="To" onChange={e => {
+                          setTo(e.target.value)
+                          if (e.target.value.length === 2) {
+                            setShowTo(true)
+                          }
+                          setTo(e.target.value)}} />
                         <span class="icon is-small is-left">
                           <i className="fas fa-plane-arrival"></i>
                         </span>
                       </p>
                     </div>
+                    {showTo ? <a onClick={() => {
+                      setShowTo(false)
+                      setTo('HNL')
+                    }} className="panel-block is-active">
+                      Honolulu, Hawaii HNL
+                      </a> : null}
                   </div>
 
                   <div className="column">
