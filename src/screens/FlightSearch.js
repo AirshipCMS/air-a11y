@@ -80,7 +80,7 @@ export default () => {
                       <p class="control has-icons-left has-icons-right">
                         <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
                         <span class="icon is-small is-left">
-                        <i className="fas fa-plane-departure"></i>
+                          <i className="fas fa-plane-departure"></i>
                         </span>
                       </p>
                     </div>
@@ -91,7 +91,7 @@ export default () => {
                       <p class="control has-icons-left has-icons-right">
                         <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
                         <span class="icon is-small is-left">
-                        <i className="fas fa-plane-arrival"></i>
+                          <i className="fas fa-plane-arrival"></i>
                         </span>
                       </p>
                     </div>
@@ -121,10 +121,94 @@ export default () => {
             </div>
           </div>
         </section>
+        <section className="section">
+          <div className="columns">
+            <div className="level">
+              <div className="level-right">
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Stops</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Airlines</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Price</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="column level-item">
+                  <div class="dropdown">
+                    <div class="dropdown-trigger">
+                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                        <span>Times</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                      <div class="dropdown-content">
+                        <a href="#" class="dropdown-item">
+                          Overview
+                    </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="section">
           <div className="container">
-            <h1 className="title">Results</h1>
+            {results.length > 0 ? <h1 className="title">Results</h1> : null}
             {
               results.map(({ price: { base }, service, segments }, i) =>
                 <div key={i}>
