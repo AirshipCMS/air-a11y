@@ -71,52 +71,53 @@ export default () => {
         <h1 className="title">Search Flights</h1>
         <section className="section">
           <div className="container">
-            <div className="tile is-ancestor">
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-plane-departure"></i>
-                  </span>
-                </p>
-              </div>
-              <div className="field">
-                <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-plane-arrival"></i>
-                  </span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section className="section">
-          <div className="container">
-            <div className="tile is-ancestor">
-              <div className="field">
-                <p className="title has-icons-left">
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-calendar-day"></i>
-                  </span>
-                  Date
-                </p>
+            <div class="box">
+              <article class="media">
+                <div className="columns">
 
-                <DateRangePicker
-                  startDate={startDate} // momentPropTypes.momentObj or null,
-                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                  endDate={endDate} // momentPropTypes.momentObj or null,
-                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                  onDatesChange={({ startDate, endDate }) => {
-                    setStartDate(startDate)
-                    setEndDate(endDate)
-                  }} // PropTypes.func.isRequired,
-                  focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                  onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-                  initialVisibleMonth={() => moment()} // PropTypes.func or null,
-                />
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
+                        <span class="icon is-small is-left">
+                        <i className="fas fa-plane-departure"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
 
-              </div>
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
+                        <span class="icon is-small is-left">
+                        <i className="fas fa-plane-arrival"></i>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="column">
+                    <div class="field">
+                      <p class="control has-icons-left has-icons-right">
+                        <DateRangePicker
+                          startDate={startDate} // momentPropTypes.momentObj or null,
+                          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                          endDate={endDate} // momentPropTypes.momentObj or null,
+                          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                          onDatesChange={({ startDate, endDate }) => {
+                            setStartDate(startDate)
+                            setEndDate(endDate)
+                          }} // PropTypes.func.isRequired,
+                          focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                          onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                          initialVisibleMonth={() => moment()} // PropTypes.func or null,
+                        />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
             </div>
           </div>
         </section>
@@ -179,60 +180,60 @@ export default () => {
 
 const requestXML = (startDate, endDate, from, to) => `<?xml version="1.0" encoding="UTF-8"?>
 <IATA_AirShoppingRQ xmlns="http://www.iata.org/IATA/2015/00/2019.2/IATA_AirShoppingRQ">
-    <MessageDoc>
-        <RefVersionNumber>1.0</RefVersionNumber>
-    </MessageDoc>
-    <Party>
-        <Participant>
+        <MessageDoc>
+          <RefVersionNumber>1.0</RefVersionNumber>
+        </MessageDoc>
+        <Party>
+          <Participant>
             <Aggregator>
-                <AggregatorID>88888888</AggregatorID>
-                <Name>JR TECHNOLOGIES</Name>
+              <AggregatorID>88888888</AggregatorID>
+              <Name>JR TECHNOLOGIES</Name>
             </Aggregator>
-        </Participant>
-        <Sender>
+          </Participant>
+          <Sender>
             <TravelAgency>
-                <AgencyID>9A</AgencyID>
-                <IATA_Number>12312312</IATA_Number>
-                <Name>Gods Travel</Name>
+              <AgencyID>9A</AgencyID>
+              <IATA_Number>12312312</IATA_Number>
+              <Name>Gods Travel</Name>
             </TravelAgency>
-        </Sender>
-    </Party>
-    <PayloadAttributes>
-        <EchoTokenText>a14cce97-c859-476d-b383-e08111dd9e0f</EchoTokenText>
-        <Timestamp>2001-12-17T09:30:47+05:00</Timestamp>
-        <TrxID>transaction${Date.now().toString().substr(0, 3)}</TrxID>
-        <VersionNumber>2019.2</VersionNumber>
-    </PayloadAttributes>
+          </Sender>
+        </Party>
+        <PayloadAttributes>
+          <EchoTokenText>a14cce97-c859-476d-b383-e08111dd9e0f</EchoTokenText>
+          <Timestamp>2001-12-17T09:30:47+05:00</Timestamp>
+          <TrxID>transaction${Date.now().toString().substr(0, 3)}</TrxID>
+          <VersionNumber>2019.2</VersionNumber>
+        </PayloadAttributes>
 
-    <Request>
-        <FlightCriteria>
+        <Request>
+          <FlightCriteria>
             <OriginDestCriteria>
-                <DestArrivalCriteria>
-                    <IATA_LocationCode>${to}</IATA_LocationCode>
-                </DestArrivalCriteria>
-                <OriginDepCriteria>
-                    <Date>${startDate.format("YYYY-MM-DD")}</Date>
-                    <IATA_LocationCode>${from}</IATA_LocationCode>
-                </OriginDepCriteria>
+              <DestArrivalCriteria>
+                <IATA_LocationCode>${to}</IATA_LocationCode>
+              </DestArrivalCriteria>
+              <OriginDepCriteria>
+                <Date>${startDate.format("YYYY-MM-DD")}</Date>
+                <IATA_LocationCode>${from}</IATA_LocationCode>
+              </OriginDepCriteria>
             </OriginDestCriteria>
             <OriginDestCriteria>
-                <DestArrivalCriteria>
-                    <IATA_LocationCode>${from}</IATA_LocationCode>
-                </DestArrivalCriteria>
-                <OriginDepCriteria>
-                    <Date>${endDate.format("YYYY-MM-DD")}</Date>
-                    <IATA_LocationCode>${to}</IATA_LocationCode>
-                </OriginDepCriteria>
-                <PreferredCabinType>
-                    <CabinTypeCode>M</CabinTypeCode>
-                </PreferredCabinType>
+              <DestArrivalCriteria>
+                <IATA_LocationCode>${from}</IATA_LocationCode>
+              </DestArrivalCriteria>
+              <OriginDepCriteria>
+                <Date>${endDate.format("YYYY-MM-DD")}</Date>
+                <IATA_LocationCode>${to}</IATA_LocationCode>
+              </OriginDepCriteria>
+              <PreferredCabinType>
+                <CabinTypeCode>M</CabinTypeCode>
+              </PreferredCabinType>
             </OriginDestCriteria>
-        </FlightCriteria>
-        <Paxs>
+          </FlightCriteria>
+          <Paxs>
             <Pax>
-                <PaxID>Pax1</PaxID>
-                <PTC>ADT</PTC>
+              <PaxID>Pax1</PaxID>
+              <PTC>ADT</PTC>
             </Pax>
-        </Paxs>
-    </Request>
-</IATA_AirShoppingRQ>`
+          </Paxs>
+        </Request>
+      </IATA_AirShoppingRQ>`
