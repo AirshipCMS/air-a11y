@@ -1,6 +1,6 @@
 export const initialNeeds = {
-  WCHC: true,
-  BLIND: true,
+  WCHC: false,
+  BLIND: false,
   DEAF: false
 };
 
