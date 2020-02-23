@@ -1,4 +1,4 @@
-import React, { useState, Children } from 'react'
+import React, { useState } from 'react'
 import ProgressBar from '../components/ProgressBar'
 import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../components/StateProvider'
@@ -117,6 +117,7 @@ export default () => {
           </div>
         </section> : null}
         <button onClick={() => history.push('/mobility-aid-storage')} className="button is-fullwidth">Button</button>
+>>>>>>> origin/master
       </div>
     </div >
   )
