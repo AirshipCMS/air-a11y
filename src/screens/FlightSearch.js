@@ -4,6 +4,7 @@ import moment from 'moment'
 import { DateRangePicker } from 'react-dates'
 import { useHistory } from 'react-router-dom'
 import { useState } from 'react'
+import { useStateValue } from '../components/StateProvider'
 import 'react-dates/lib/css/_datepicker.css'
 
 // xq .IATA_AirShoppingRS.Response.OffersGroup.CarrierOffers.Offer[].OfferItem.Price.BaseAmount
@@ -12,6 +13,11 @@ const offersXmlToJson = response => [...response.getElementsByTagName('Offer')].
   price: {
     base: offer.getElementsByTagName('BaseAmount')[0].textContent,
     total: offer.getElementsByTagName('TotalAmount')[0].textContent,
+  },
+  service: {
+    WCHC: Math.random() < .4,
+    BLIND: Math.random() < .1,
+    DEAF: Math.random() < .1,
   },
   segments: [...response.getElementsByTagName('OriginDest')].map(od => ({
     origin: od.getElementsByTagName('OriginCode')[0].textContent,
@@ -22,6 +28,7 @@ const offersXmlToJson = response => [...response.getElementsByTagName('Offer')].
 export default () => {
   let history = useHistory()
 
+  const [{ needs }] = useStateValue();
   const [results, setResults] = useState([]);
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
@@ -53,6 +60,10 @@ export default () => {
     .then(offersXmlToJson)
     .then(res => setResults(res))
     .catch(console.error)
+
+  const matchesPrefs = service => Object.entries(needs)
+    .filter(([_,v]) => v)
+    .every(([k,_]) => service[k])
 
   return (
     <div className="container">
@@ -114,9 +125,16 @@ export default () => {
           <div className="container">
             <h1 className="title">Results</h1>
             {
-              results.map(({price: { base }, segments}, i) =>
-                <div className="tile" key={i}>
+              results.map(({price: { base }, service, segments}, i) =>
+                <div className={
+                  `tile ${service.WCHC && 'svc-WCHC'} ${service.BLIND && 'svc-BLIND'} ${service.DEAF && 'svc-DEAF'} ${matchesPrefs(service) && 'a11y-match'}`
+                } key={i}>
                   <p className="price">{base}</p>
+                  <p className="service">
+                    {service.WCHC && 'WCHC'}
+                    {service.BLIND && 'BLIND'}
+                    {service.DEAF && 'DEAF'}
+                  </p>
                   <div className="segments">
                   {
                     segments.map(({ origin, destination }, k) =>

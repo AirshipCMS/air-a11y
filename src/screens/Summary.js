@@ -1,8 +1,10 @@
 import React from 'react'
 import ProgressBar from '../components/ProgressBar'
 import { useStateValue } from '../components/StateProvider'
+import { useHistory } from 'react-router-dom'
 
 export default () => {
+  let history = useHistory()
 
   const [props] = useStateValue();
   console.log(props)
@@ -24,6 +26,7 @@ export default () => {
           ))}
         </div>
       </div>
+      <button onClick={() => history.push('/search-flights')} className="button is-fullwidth">Button</button>
     </div>
   )
 }
