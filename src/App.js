@@ -11,6 +11,8 @@ import SeatPreferences from './SeatPreferences'
 import TypeOfNeeds from './TypeOfNeeds'
 import SeatTransfer from './SeatTransfer'
 import MobilityAid from './MobilityAid';
+import FlightSearch from './FlightSearch'
+
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
           </Route>
           <Route path="/mobility-aid">
             <MobilityAid />
+          </Route>
+          <Route path="/search-flights">
+            <FlightSearch />
           </Route>
         </Switch>
       </div>
