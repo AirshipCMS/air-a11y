@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ProgressBar from '../components/ProgressBar'
@@ -6,7 +6,10 @@ import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
 
 export default () => {
-  window.scrollTo(0, 0)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   let history = useHistory()
   const [{ seatPreferences }, dispatch] = useStateValue();
 

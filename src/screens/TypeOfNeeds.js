@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -8,7 +8,10 @@ import { useStateValue } from '../components/StateProvider'
 import specialServices from '../specialServices'
 
 export default () => {
-  window.scrollTo(0, 0)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+  
   const [{ needs }, dispatch] = useStateValue();
   let history = useHistory()
 

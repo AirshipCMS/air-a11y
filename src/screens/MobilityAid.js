@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ProgressBar from '../components/ProgressBar'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -7,7 +7,10 @@ import { useStateValue } from '../components/StateProvider'
 import wheelchairs from '../wheelchairs.json'
 
 export default () => {
-  window.scrollTo(0, 0)
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   let history = useHistory()
   let [state, setState] = useState({ filteredChairs: [], input: '', showStorage: false })
   const [{ mobilityAid }, dispatch] = useStateValue();
