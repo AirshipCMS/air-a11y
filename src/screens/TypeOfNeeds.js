@@ -52,7 +52,7 @@ export default () => {
             </div>
             <div className="question-right">
 
-              <h2>I need...
+              <h2>Please address my needs for...
                 <span className="icon help-text-button help-text-button-off">
                   <i className="help far fa-question-circle"></i>
                   <i className="help fas fa-question-circle"></i>

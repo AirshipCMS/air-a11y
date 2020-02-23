@@ -60,7 +60,7 @@ export default () => {
                 </span>
               </h2>
 
-              <div className="panel-block">
+              <div className="search panel-block">
                 <p className="control has-icons-left">
                   <input onKeyUp={searchWheelchairs} className="input" type="text" placeholder="Make/Model" />
                   <span className="icon is-left">
@@ -68,6 +68,7 @@ export default () => {
                   </span>
                 </p>
               </div>
+
               {state.filteredChairs.map((chair, i) => (
                 <a onClick={selectChair(chair)} key={i} className="panel-block is-active">
                   {chair.name}
@@ -83,81 +84,86 @@ export default () => {
         {!state.showStorage ? <section>
           <div className="question">
             <div className="question-left">
+              <div className="mobility-aid-image">
+                {mobilityAid.name ? 
+                  <img src={mobilityAid.image} />: null}
+              </div>
             </div>
             <div className="question-right">
 
             <h2>Dimensions</h2>
-
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Name</label>
+            
+            <div className="dimensions-group">
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Name</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <p className="control">
+                      <input onChange={({ target }) => updateForm('name', target.value)} value={mobilityAid.name} className="input" placeholder="Name" />
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="field-body">
-                <div className="field">
-                  <p className="control">
-                    <input onChange={({ target }) => updateForm('name', target.value)} value={mobilityAid.name} className="input" placeholder="Name" />
-                  </p>
+              
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Width</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <p className="control">
+                      <input onChange={({ target }) => updateForm('width', target.value)} value={mobilityAid.width} className="input" placeholder="Width" />
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Height</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <p className="control">
+                      <input onChange={({ target }) => updateForm('height', target.value)} value={mobilityAid.height} className="input" placeholder="Height" />
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Length</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <p className="control">
+                      <input onChange={({ target }) => updateForm('length', target.value)} value={mobilityAid.length} className="input" placeholder="Length" />
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Weight</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <p className="control">
+                      <input onChange={({ target }) => updateForm('weight', target.value)} value={mobilityAid.weight} className="input" placeholder="Weight" />
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Width</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <p className="control">
-                    <input onChange={({ target }) => updateForm('width', target.value)} value={mobilityAid.width} className="input" placeholder="Width" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Height</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <p className="control">
-                    <input onChange={({ target }) => updateForm('height', target.value)} value={mobilityAid.height} className="input" placeholder="Height" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Length</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <p className="control">
-                    <input onChange={({ target }) => updateForm('length', target.value)} value={mobilityAid.length} className="input" placeholder="Length" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Weight</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <p className="control">
-                    <input onChange={({ target }) => updateForm('weight', target.value)} value={mobilityAid.weight} className="input" placeholder="Weight" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mobility-aid-image">
-              {mobilityAid.name ? <figure className="image is-128x128">
-                <img src={mobilityAid.image} />
-              </figure> : null}
-            </div>
+            {/* <div className="mobility-aid-image">
+              {mobilityAid.name ? 
+                <img src={mobilityAid.image} />: null}
+            </div> */}
 
 
             </div>

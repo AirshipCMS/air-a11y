@@ -77,9 +77,6 @@ export default () => {
                 </span>
               </h2>
 
-              <p>Some text here</p>
-
-
               <div className="radio-group">
                 <label className="radio">
                   <input onChange={({ target }) => updateForm('aisle_seat', 'required')} checked={seatPreferences.aisle_seat == 'required'} type="radio" name="aisle_seat" value="required" />
@@ -114,8 +111,6 @@ export default () => {
                 </span>
               </h2>
 
-              <p>Some text here</p>
-
               <div className="radio-group">
                 <label className="radio">
                   <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} checked={seatPreferences.bathroom_seat == 'required'} type="radio" name="bathroom_seat" value="required" />
@@ -146,9 +141,6 @@ export default () => {
                   <i className="help fas fa-question-circle"></i>
                 </span>
               </h2>
-
-              <p>Some text here</p>
-
               <div className="radio-group">
                 <label className="radio">
                   <input onChange={({ target }) => updateForm('front_row_seat', 'required')} checked={seatPreferences.front_row_seat == 'required'} type="radio" name="front_row_seat" value="required" />
