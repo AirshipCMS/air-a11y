@@ -343,7 +343,7 @@ i.help{
     }
   }
 
-  &:focus{
+  &:focus-within{
     border-color: $green;
     box-shadow: 0 0 0 4px rgba(131, 191,55, 0.25);
 
