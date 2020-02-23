@@ -44,7 +44,7 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatTransfer.aisle_chair ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -55,7 +55,7 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatTransfer.seat_assistance ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -85,7 +85,7 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatTransfer.request_wheelchair ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
@@ -96,7 +96,7 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className="fancy-checkbox">
+                  <label className={`fancy-checkbox ${seatTransfer.transportation_assistance ? 'fancy-checkbox-checked':''}`}>
                     <div className="fancy-checkbox-image">
                       <div className="placeholder">pic</div>
                     </div>
