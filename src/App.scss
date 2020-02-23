@@ -48,10 +48,11 @@ h1, h2, h3, h4, h5, h6, button, .button{
 
 .app-container{
   border-top: 28px solid $black;
-}
 
-.a11y-match{
-  border: 5px solid $green;
+  &.app-container-search{
+    background-color: #EEEEEE;
+    min-height: 800px;
+  }
 }
 
 .container{
@@ -76,10 +77,10 @@ h1, h2, h3, h4, h5, h6, button, .button{
 }
 
 .footer{
-  padding: 15px 0;
+  padding: 15px 0 45px;
   background-color: transparent;
   border-top: 6px solid $black;
-  margin: $large-margin 0 30px;
+  margin: $large-margin 0 0;
 
   p{
     font-weight: 700;
@@ -829,3 +830,61 @@ input[type='checkbox']{
   }
 }
 
+h1:first-of-type.search-flights{
+  margin-top: $small-margin;
+  margin-bottom: $small-margin;
+}
+
+.search-results{
+  margin-top: $small-margin;
+}
+
+.search-result{
+  margin-bottom: $small-margin;
+  padding: 0;
+
+  .segments{
+
+  }
+
+  .segment{
+    padding: $small-margin;
+
+    + .segment{
+      border-top: 1px solid #CCC;
+    }
+
+    
+    &.a11y-match{
+      border: 7px solid $green;
+      
+      &:first-of-type{
+        border-bottom: 0;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+      }
+  
+      &:last-of-type{
+        border-top: 1px solid $green;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+      }
+    }
+  }
+}
+
+.level{
+  margin-top: $small-margin;
+
+  button,
+  .button{
+    border: 0;
+    background-color: transparent;
+    font-weight: 400;
+    font-size: 16px;
+
+    span{
+      font-weight: 400;
+    }
+  }
+}
