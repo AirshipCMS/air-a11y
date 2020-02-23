@@ -2,7 +2,9 @@ import moment from 'moment'
 
 const SpeechSDK = window.SpeechSDK
 
-const AZURE_TOKEN = process.env.AZURE_TOKEN
+// const AZURE_TOKEN = process.env.AZURE_TOKEN
+// FOR DEMO
+const AZURE_TOKEN = 'be871cf336744c91a75431b68af603d5'
 
 const getToken = () => new Promise((resolve, reject) => {
   if( window.localStorage.azureToken && window.localStorage.azureTokenExpires > Date.now() ){

@@ -112,11 +112,6 @@ p + .hr{
   margin-top: $large-margin;
 }
 
-.hr + .button,
-.hr + button{
-  margin-top: $medium-margin;
-}
-
 .button + p,
 button + p{
   margin-top: $large-margin;
@@ -148,6 +143,7 @@ button + p{
 
   .button{
     width: 230px; /*desktop */
+    margin-top: $medium-margin;
   }
 }
 
@@ -351,6 +347,14 @@ i.help{
       border-top: 2px solid $green;
     }
   }
+
+  &.fancy-checkbox-checked{
+    border-color: $green;
+
+    .fancy-checkbox-text{
+      border-top: 2px solid $green;
+    }
+  }
 }
 
 .fancy-checkbox-image{
@@ -364,4 +368,22 @@ i.help{
 
 .radio-group{
   margin-top: $small-margin*0.5;
+}
+
+.radio{
+  display: flex;
+  flex-flow: row nowrap;
+  
+  input{
+    margin-right: 10px;
+    margin-top: 11px;
+  }
+
+  p{
+    line-height: 2;
+  }
+}
+
+.radio + .radio{
+  margin-left: 0;
 }
