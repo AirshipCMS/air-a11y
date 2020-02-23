@@ -41,7 +41,7 @@ export default () => {
   headers.append("Authorization-Key", process.env.IATA_AUTH_KEY);
 
   const searchFlights = () =>
-  // PRODUCTION
+    // PRODUCTION
     // fetch("http://iata.api.mashery.com/athena/ndc192api", {
     //   method: 'POST',
     //   headers,
@@ -53,17 +53,17 @@ export default () => {
     // .then(res => setResults(res))
     // .catch(console.error)
 
-  // DEMO
+    // DEMO
     fetch("/api/search.xml")
-    .then(res => res.text())
-    .then(str => (new window.DOMParser()).parseFromString(str,"text/xml"))
-    .then(offersXmlToJson)
-    .then(res => setResults(res))
-    .catch(console.error)
+      .then(res => res.text())
+      .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+      .then(offersXmlToJson)
+      .then(res => setResults(res))
+      .catch(console.error)
 
   const matchesPrefs = service => Object.entries(needs)
-    .filter(([_,v]) => v)
-    .every(([k,_]) => service[k])
+    .filter(([_, v]) => v)
+    .every(([k, _]) => service[k])
 
   return (
     <div className="container">
@@ -82,7 +82,7 @@ export default () => {
               </div>
               <div className="field">
                 <p className="control has-icons-left">
-                  <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)}/>
+                  <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
                   <span className="icon is-small is-left">
                     <i className="fas fa-plane-arrival"></i>
                   </span>
@@ -104,13 +104,13 @@ export default () => {
 
                 <DateRangePicker
                   startDate={startDate} // momentPropTypes.momentObj or null,
-  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                  startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
                   endDate={endDate} // momentPropTypes.momentObj or null,
-  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                    onDatesChange={({ startDate, endDate }) => {
-                      setStartDate(startDate)
-                      setEndDate(endDate)
-                    }} // PropTypes.func.isRequired,
+                  endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                  onDatesChange={({ startDate, endDate }) => {
+                    setStartDate(startDate)
+                    setEndDate(endDate)
+                  }} // PropTypes.func.isRequired,
                   focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
                   onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
                   initialVisibleMonth={() => moment()} // PropTypes.func or null,
@@ -125,25 +125,44 @@ export default () => {
           <div className="container">
             <h1 className="title">Results</h1>
             {
-              results.map(({price: { base }, service, segments}, i) =>
-                <div className={
-                  `tile ${service.WCHC && 'svc-WCHC'} ${service.BLIND && 'svc-BLIND'} ${service.DEAF && 'svc-DEAF'} ${matchesPrefs(service) && 'a11y-match'}`
-                } key={i}>
-                  <p className="price">{base}</p>
-                  <p className="service">
-                    {service.WCHC && 'WCHC'}
-                    {service.BLIND && 'BLIND'}
-                    {service.DEAF && 'DEAF'}
-                  </p>
+              results.map(({ price: { base }, service, segments }, i) =>
+                <div key={i}>
                   <div className="segments">
-                  {
-                    segments.map(({ origin, destination }, k) =>
-                      <div className="segment" key={k}>
-                        <p className="origin">{origin}</p>
-                        <p className="destination">{destination}</p>
-                      </div>
-                    )
-                  }
+                    {
+                      segments.map(({ origin, destination }, k) =>
+                        <div className={
+                          `box segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
+                        }>
+                          <article className="media">
+                            <div className="media-left">
+                              <figure className="image is-64x64">
+                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                              </figure>
+                            </div>
+                            <div className="media-content">
+                              <div className="content">
+                                <div class="columns">
+                                  <div class="column">
+                                    <p className="">7:45am - 6:00pm</p>
+                                    <p>Airline</p>
+                                  </div>
+                                  <div class="column">
+                                    <p>6h 15m</p>
+                                    <p className="">{origin}-{destination}</p>
+                                  </div>
+                                  <div class="column">
+                                    <p className="">Nonstop</p>
+                                  </div>
+                                  <div class="column">
+                                    <p className="price">${base}</p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </div>
+                      )
+                    }
                   </div>
                 </div>
               )
@@ -181,7 +200,7 @@ const requestXML = (startDate, endDate, from, to) => `<?xml version="1.0" encodi
     <PayloadAttributes>
         <EchoTokenText>a14cce97-c859-476d-b383-e08111dd9e0f</EchoTokenText>
         <Timestamp>2001-12-17T09:30:47+05:00</Timestamp>
-        <TrxID>transaction${Date.now().toString().substr(0,3)}</TrxID>
+        <TrxID>transaction${Date.now().toString().substr(0, 3)}</TrxID>
         <VersionNumber>2019.2</VersionNumber>
     </PayloadAttributes>
 
