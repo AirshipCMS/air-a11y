@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import specialServices from '../specialServices'
 
 export default () => {
+  window.scrollTo(0, 0)
   let history = useHistory()
 
   const [props] = useStateValue();

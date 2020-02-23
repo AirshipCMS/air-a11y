@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom'
 import { useStateValue } from '../components/StateProvider'
 
 export default () => {
+  window.scrollTo(0, 0)
   let history = useHistory()
   const [{ mobilityAid, mobilityAidStorage }, dispatch] = useStateValue();
 

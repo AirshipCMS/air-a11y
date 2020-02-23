@@ -6,6 +6,7 @@ import { useStateValue } from '../components/StateProvider'
 import { useHistory } from 'react-router-dom'
 
 export default () => {
+  window.scrollTo(0, 0)
   let history = useHistory()
   const [{ seatPreferences }, dispatch] = useStateValue();
 

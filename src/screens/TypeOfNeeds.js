@@ -8,6 +8,7 @@ import { useStateValue } from '../components/StateProvider'
 import specialServices from '../specialServices'
 
 export default () => {
+  window.scrollTo(0, 0)
   const [{ needs }, dispatch] = useStateValue();
   let history = useHistory()
 

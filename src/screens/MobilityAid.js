@@ -7,6 +7,7 @@ import { useStateValue } from '../components/StateProvider'
 import wheelchairs from '../wheelchairs.json'
 
 export default () => {
+  window.scrollTo(0, 0)
   let history = useHistory()
   let [state, setState] = useState({ filteredChairs: [], input: '', showStorage: false })
   const [{ mobilityAid }, dispatch] = useStateValue();
