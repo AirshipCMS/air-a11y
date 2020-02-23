@@ -23,7 +23,7 @@ export default () => {
   }
 
   const updateForm = (field, value) => {
-    dispatch({ type: 'SAVE_NEEDS', form_field: { [field]: value }})
+    dispatch({ type: 'SAVE_NEEDS', form_field: { [field]: value } })
   }
 
   return (
@@ -47,7 +47,7 @@ export default () => {
           <div className="question">
             <div className="question-left">
               <div className="help-text">
-                <SpeechSelection navigation={speechNavigation} selections={selections}/>
+                <SpeechSelection navigation={speechNavigation} selections={selections} />
               </div>
             </div>
             <div className="question-right">
@@ -62,12 +62,12 @@ export default () => {
               <div className="columns fancy-checkboxes">
                 {specialServices.map(need => (
                   <div key={need.code} className="column is-one-third">
-                    <label className={`fancy-checkbox ${needs[need.code] ? 'fancy-checkbox-checked':''}`}>
+                    <label className={`fancy-checkbox ${needs[need.code] ? 'fancy-checkbox-checked' : ''}`}>
                       <div className="fancy-checkbox-image">
-                        <div className="placeholder">pic</div>
+                        <i className={`${need.image}`}></i>
                       </div>
                       <div className="fancy-checkbox-text">
-                      <input checked={needs[need.code]} onChange={({ target }) => updateForm(need.code, target.checked)} type="checkbox" name={need.code} />
+                        <input checked={needs[need.code]} onChange={({ target }) => updateForm(need.code, target.checked)} type="checkbox" name={need.code} />
                         <p>{need.description}</p>
                       </div>
                     </label>
@@ -76,23 +76,23 @@ export default () => {
 
                 {/* mocked */}
                 <div className="column is-one-third">
-                  <label className={`fancy-checkbox ${needs.serviceAnimal ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${needs.serviceAnimal ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-dog"></i>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} name='serviceAnimal'/>
+                      <input type="checkbox" checked={needs.serviceAnimal} onChange={({ target }) => updateForm('serviceAnimal', target.checked)} name='serviceAnimal' />
                       <p>Service animal</p>
                     </div>
                   </label>
                 </div>
                 <div className="column is-one-third">
-                  <label className={`fancy-checkbox ${needs.other ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${needs.other ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-universal-access"></i>
                     </div>
                     <div className="fancy-checkbox-text">
-                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} name='other'/>
+                      <input type="checkbox" checked={needs.other} onChange={({ target }) => updateForm('other', target.checked)} name='other' />
                       <p>Other</p>
                     </div>
                   </label>
@@ -104,8 +104,8 @@ export default () => {
 
               </div>
 
-            <button onClick={() => history.push('/')} className="button button-grey">Back</button>
-            <button onClick={() => history.push('/seat+location')} className="button">Next</button>
+              <button onClick={() => history.push('/')} className="button button-grey">Back</button>
+              <button onClick={() => history.push('/seat+location')} className="button">Next</button>
 
             </div>
           </div>
