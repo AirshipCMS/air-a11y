@@ -299,7 +299,7 @@ export default () => {
         </section>
 
         <Footer />
-        
+
       </div>
     </div >
   )
