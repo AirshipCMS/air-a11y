@@ -57,7 +57,7 @@ export default () => {
                 <div className="column is-half">
                   <label className={`fancy-checkbox ${seatTransfer.seat_assistance ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <i class="fas fa-people-carry"></i>
+                      <i class="fas fa-hands-helping"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('seat_assistance', target.checked)} checked={seatTransfer.seat_assistance} type="checkbox" name="seat_assistance" />
@@ -98,7 +98,7 @@ export default () => {
                 <div className="column is-half">
                   <label className={`fancy-checkbox ${seatTransfer.transportation_assistance ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <i class="far fa-person-dolly"></i>
+                      <i class="far fa-hands-helping"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('transportation_assistance', target.checked)} checked={seatTransfer.transportation_assistance} type="checkbox" name="transportation_assistance" />
