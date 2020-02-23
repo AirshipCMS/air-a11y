@@ -10,7 +10,7 @@ export default () => {
   const [{ seatTransfer }, dispatch] = useStateValue();
 
   const updateForm = (field, value) => {
-    dispatch({ type: 'SAVE_SEAT_TRANSFER', form_field: { [field]: value }})
+    dispatch({ type: 'SAVE_SEAT_TRANSFER', form_field: { [field]: value } })
   }
 
   return (
@@ -44,9 +44,9 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatTransfer.aisle_chair ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatTransfer.aisle_chair ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="far fa-person-dolly-empty"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('aisle_chair', target.checked)} checked={seatTransfer.aisle_chair} type="checkbox" name="aisle_chair" />
@@ -55,13 +55,13 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatTransfer.seat_assistance ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatTransfer.seat_assistance ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-people-carry"></i>
                     </div>
                     <div className="fancy-checkbox-text">
-                    <input onChange={({ target }) => updateForm('seat_assistance', target.checked)} checked={seatTransfer.seat_assistance} type="checkbox" name="seat_assistance" />
-                    <p>Request additional assistance to transfer to my seat. An additional person/transporter will help you to your seat.</p>
+                      <input onChange={({ target }) => updateForm('seat_assistance', target.checked)} checked={seatTransfer.seat_assistance} type="checkbox" name="seat_assistance" />
+                      <p>Request additional assistance to transfer to my seat. An additional person/transporter will help you to your seat.</p>
                     </div>
                   </label>
                 </div>
@@ -85,9 +85,9 @@ export default () => {
 
               <div className="columns fancy-checkboxes">
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatTransfer.request_wheelchair ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatTransfer.request_wheelchair ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="fas fa-wheelchair"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('request_wheelchair', target.checked)} checked={seatTransfer.request_wheelchair} type="checkbox" name="request_wheelhcair" />
@@ -96,9 +96,9 @@ export default () => {
                   </label>
                 </div>
                 <div className="column is-half">
-                  <label className={`fancy-checkbox ${seatTransfer.transportation_assistance ? 'fancy-checkbox-checked':''}`}>
+                  <label className={`fancy-checkbox ${seatTransfer.transportation_assistance ? 'fancy-checkbox-checked' : ''}`}>
                     <div className="fancy-checkbox-image">
-                      <div className="placeholder">pic</div>
+                      <i class="far fa-person-dolly"></i>
                     </div>
                     <div className="fancy-checkbox-text">
                       <input onChange={({ target }) => updateForm('transportation_assistance', target.checked)} checked={seatTransfer.transportation_assistance} type="checkbox" name="transportation_assistance" />
