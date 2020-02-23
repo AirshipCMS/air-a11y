@@ -56,6 +56,7 @@ const selectChoice = (selections, navigation, speechText) => {
  */
 export default ({selections, navigation}) => {
   const [debug, setDebug] = useState('');
+  const [listening, setListening] = useState(false);
   const [speechConfig, setSpeechConfig] = useState(null);
   const [audioConfig, setAudioConfig] = useState(null);
 
@@ -70,6 +71,7 @@ export default ({selections, navigation}) => {
   let recognizer
   let localBuffer = ''
   const listen = () => {
+    setListening(true)
     localBuffer = ''
     setDebug('Listening...')
     recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
@@ -85,18 +87,19 @@ export default ({selections, navigation}) => {
         }
 
         recognizer.close();
+        setListening(false)
       },
       err => {
         setDebug(err.toString())
         window.console.log(err);
 
         recognizer.close();
+        setListening(false)
       });
   }
 
   return (
-    
-    <div className="speech-button" onClick={listen}>
+    <div className={`speech-button ${listening ? 'speech-button-listening':''}`} onClick={listen}>
       <span className="speech-button-text"><i class="fas fa-microphone"></i> Air Ally Assistant</span>
       <div className="DEBUG-ONLY"><span>{debug}</span></div>
     </div>
