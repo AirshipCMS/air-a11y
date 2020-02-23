@@ -1,11 +1,13 @@
 import React, { useState, Children } from 'react'
 import ProgressBar from '../components/ProgressBar'
+import SpeechInput from '../components/SpeechInput'
 import { useHistory } from 'react-router-dom'
 import wheelchairs from '../wheelchairs.json'
 
 export default () => {
   let history = useHistory()
   let [state, setState] = useState({ filteredChairs: [], selectedChair: null, input: '', showStorage: false, form: { cabin_storage: false } })
+  let [specificInstructionsText, setSpecificInstructionsText] = useState('')
 
   const searchWheelchairs = ({ KeyCode, target }) => {
     setState({
@@ -278,7 +280,7 @@ export default () => {
                 <h1>Cabin Storage</h1>
                 <label className="checkbox">
                   <input type="checkbox" name="cabin_storage" onChange={({ target }) => updateForm("cabin_storage", target.checked)} />
-                  Please store my mobility aid in the cabin closet so I can access it easily. 
+                  Please store my mobility aid in the cabin closet so I can access it easily.
 Note: aircrafts have limited space in the cabin closet for foldable wheelchairs or mobility aids, and can store your mobility aid on a first-come, first-served basis. Depending on availability, your mobility aid may need to be stored in the aircraft cargo (below the plane).
                 </label>
               </div>
@@ -295,8 +297,9 @@ Note: aircrafts have limited space in the cabin closet for foldable wheelchairs 
             <div className="box">
               <div className="content">
                 <h1>Aircraft cargo storage</h1>
+                <SpeechInput setText={setSpecificInstructionsText}/>
                 <p>Any specific instructions for baggage handlers/ground staff?</p>
-                <textarea className="textarea" placeholder=""></textarea>
+                <textarea className="textarea" placeholder="" onChange={setSpecificInstructionsText} value={specificInstructionsText}></textarea>
               </div>
             </div>
           </div>
