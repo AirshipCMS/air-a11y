@@ -1,4 +1,6 @@
 import React from 'react'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import 'react-dates/initialize'
 import moment from 'moment'
 import { DateRangePicker } from 'react-dates'
@@ -66,16 +68,21 @@ export default () => {
     .every(([k, _]) => service[k])
 
   return (
-    <div className="container">
-      <div className="content">
+    <div className="app-container">
+      <div className="container">
+        <Header />
+        
         <h1 className="title">Search Flights</h1>
+
         <section className="section">
           <div className="container">
-            <div class="box">
-              <article class="media">
-                <div className="columns">
+            <div class="box box-search">
 
-                  <div className="column">
+              
+              <div className="box-search-left">
+                <div className="box-search-place">
+
+                  <div className="box-search-from">
                     <div class="field">
                       <p class="control has-icons-left has-icons-right">
                         <input className="input" type="text" placeholder="From" onChange={e => setFrom(e.target.value)} />
@@ -86,7 +93,7 @@ export default () => {
                     </div>
                   </div>
 
-                  <div className="column">
+                  <div className="box-search-to">
                     <div class="field">
                       <p class="control has-icons-left has-icons-right">
                         <input className="input" type="text" placeholder="To" onChange={e => setTo(e.target.value)} />
@@ -95,32 +102,41 @@ export default () => {
                         </span>
                       </p>
                     </div>
-                  </div>
 
-                  <div className="column">
-                    <div class="field">
-                      <p class="control has-icons-left has-icons-right">
-                        <DateRangePicker
-                          startDate={startDate} // momentPropTypes.momentObj or null,
-                          startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                          endDate={endDate} // momentPropTypes.momentObj or null,
-                          endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                          onDatesChange={({ startDate, endDate }) => {
-                            setStartDate(startDate)
-                            setEndDate(endDate)
-                          }} // PropTypes.func.isRequired,
-                          focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                          onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-                          initialVisibleMonth={() => moment()} // PropTypes.func or null,
-                        />
-                      </p>
+                    <div className="box-search-dates">
+                      <div className="date-fields">
+                        <div class="field">
+                          <p class="control has-icons-left has-icons-right">
+                            <DateRangePicker
+                              startDate={startDate} // momentPropTypes.momentObj or null,
+                              startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                              endDate={endDate} // momentPropTypes.momentObj or null,
+                              endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                              onDatesChange={({ startDate, endDate }) => {
+                                setStartDate(startDate)
+                                setEndDate(endDate)
+                              }} // PropTypes.func.isRequired,
+                              focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                              onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                              initialVisibleMonth={() => moment()} // PropTypes.func or null,
+                            />
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
+                  <div className="box-search-right">
+                    <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
+                  </div>
+
                 </div>
-              </article>
+
+              </div>
             </div>
           </div>
         </section>
+
         <section className="section">
           <div className="columns">
             <div className="level">
@@ -253,9 +269,6 @@ export default () => {
               )
             }
           </div>
-        </section>
-        <section>
-          <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
         </section>
       </div>
     </div >
