@@ -85,30 +85,26 @@ export default () => {
               <p>Some text here</p>
 
 
-              <div className="columns">
-                <div className="column">
-                  <div className="radio-group">
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('aisle_seat', 'required')} type="radio" name="aisle_seat" value="required" />
-                      <p>I need a seat next to the aisle</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('aisle_seat', 'preferred')} type="radio" name="aisle_seat" value="preferred" />
-                      <p>I prefer a seat next to the aisle</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('aisle_seat', 'not important')} type="radio" name="aisle_seat" value="not important" />
-                      <p>Not important</p>
-                    </label>
-                  </div>
-                </div>
-                <div className="column">
-                  <div className="placeholder"></div>
-                </div>
+              <div className="radio-group">
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'required')} type="radio" name="aisle_seat" value="required" />
+                  <p>I need a seat next to the aisle</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'preferred')} type="radio" name="aisle_seat" value="preferred" />
+                  <p>I prefer a seat next to the aisle</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('aisle_seat', 'not important')} type="radio" name="aisle_seat" value="not important" />
+                  <p>Not important</p>
+                </label>
               </div>
-
+            </div>
+            <div className="column">
+              <div className="placeholder"></div>
             </div>
           </div>
+
         </section>
 
         <section className="section">
@@ -125,31 +121,23 @@ export default () => {
 
               <p>Some text here</p>
 
-
-              <div className="columns">
-                <div className="column">
-                  <div className="radio-group">
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} type="radio" name="bathroom_seat" value="required" />
-                      <p>I need a seat next to a bathroom</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('bathroom_seat', 'preferred')} type="radio" name="bathroom_seat" value="preferred" />
-                      <p>I prefer a seat next to a bathroom</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('bathroom_seat', 'not important')} type="radio" name="bathroom_seat" value="not important" />
-                      <p>Not important</p>
-                    </label>
-                  </div>
-                </div>
-                <div className="column">
-                  <div className="placeholder"></div>
-                </div>
+              <div className="radio-group">
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'required')} type="radio" name="bathroom_seat" value="required" />
+                  <p>I need a seat next to a bathroom</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'preferred')} type="radio" name="bathroom_seat" value="preferred" />
+                  <p>I prefer a seat next to a bathroom</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('bathroom_seat', 'not important')} type="radio" name="bathroom_seat" value="not important" />
+                  <p>Not important</p>
+                </label>
               </div>
-
             </div>
           </div>
+
         </section>
 
         <section className="section">
@@ -165,32 +153,25 @@ export default () => {
               </h2>
 
               <p>Some text here</p>
-
-              <div className="columns">
-                <div className="column">
-                  <div className="radio-group">
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('front_row_seat', 'required')} type="radio" name="front_row_seat" value="required" />
-                      <p>I need a seat in the front row (or row closest to the entrance)</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('front_row_seat', 'preferred')} type="radio" name="front_row_seat" value="preferred" />
-                      <p>I prefer a seat in the front row (or row closest to the entrance)</p>
-                    </label>
-                    <label className="radio">
-                      <input onChange={({ target }) => updateForm('front_row_seat', 'not important')} type="radio" name="front_row_seat" value="not important" />
-                      <p>Not important</p>
-                    </label>
-                  </div>
-                </div>
-                <div className="column">
-                  <div className="placeholder"></div>
-                </div>
+              
+              <div className="radio-group">
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'required')} type="radio" name="front_row_seat" value="required" />
+                  <p>I need a seat in the front row (or row closest to the entrance)</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'preferred')} type="radio" name="front_row_seat" value="preferred" />
+                  <p>I prefer a seat in the front row (or row closest to the entrance)</p>
+                </label>
+                <label className="radio">
+                  <input onChange={({ target }) => updateForm('front_row_seat', 'not important')} type="radio" name="front_row_seat" value="not important" />
+                  <p>Not important</p>
+                </label>
               </div>
 
               <button onClick={() => history.push('/seat-transfer')} className="button button-grey">Back (Fix)</button>
               <button onClick={() => history.push('/seat-transfer')} className="button">Next</button>
-
+            
             </div>
           </div>
         </section>

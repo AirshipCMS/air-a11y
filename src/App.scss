@@ -112,11 +112,6 @@ p + .hr{
   margin-top: $large-margin;
 }
 
-.hr + .button,
-.hr + button{
-  margin-top: $medium-margin;
-}
-
 .button + p,
 button + p{
   margin-top: $large-margin;
@@ -148,6 +143,7 @@ button + p{
 
   .button{
     width: 230px; /*desktop */
+    margin-top: $medium-margin;
   }
 }
 
@@ -158,6 +154,8 @@ h1,h2,h3,h4,h5,h6,p,ul,li,ol,a{
   margin: 0;
   color: $black;
 }
+
+/* BUTTON */
 
 .button{
   border-color: $green;
@@ -173,6 +171,25 @@ h1,h2,h3,h4,h5,h6,p,ul,li,ol,a{
   color: $darker-green;
   border-color: $green;
   box-shadow: 0 0 0 4px rgba(131, 191,55, 0.25);
+}
+
+/* BUTTON GREY */
+
+
+.button-grey{
+  border-color: #CCCCCC;
+}
+
+.button-grey:hover{
+  border-color: #CCCCCC;
+  background-color: #CCCCCC;
+}
+
+.button-grey:focus:not(:active), 
+.button-grey.is-focused:not(:active){
+  color: $black;
+  border-color: #888888;
+  box-shadow: 0 0 0 4px rgba(0,0,0, 0.10);
 }
 
 a{
@@ -343,9 +360,17 @@ i.help{
     }
   }
 
-  &:focus{
+  &:focus-within{
     border-color: $green;
     box-shadow: 0 0 0 4px rgba(131, 191,55, 0.25);
+
+    .fancy-checkbox-text{
+      border-top: 2px solid $green;
+    }
+  }
+
+  &.fancy-checkbox-checked{
+    border-color: $green;
 
     .fancy-checkbox-text{
       border-top: 2px solid $green;
@@ -364,4 +389,22 @@ i.help{
 
 .radio-group{
   margin-top: $small-margin*0.5;
+}
+
+.radio{
+  display: flex;
+  flex-flow: row nowrap;
+  
+  input{
+    margin-right: 10px;
+    margin-top: 11px;
+  }
+
+  p{
+    line-height: 2;
+  }
+}
+
+.radio + .radio{
+  margin-left: 0;
 }
