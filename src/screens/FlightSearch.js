@@ -1,6 +1,4 @@
 import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import 'react-dates/initialize'
 import moment from 'moment'
 import { DateRangePicker } from 'react-dates'
@@ -70,238 +68,233 @@ export default () => {
     .every(([k, _]) => service[k])
 
   return (
-    <div className="app-container app-container-search">
-      <div className="container">
-        <Header />
+    <div className="container app-container-search-flights">
 
-        <h1 className="search-flights">Search Flights</h1>
+      <h1 className="search-flights">Search Flights</h1>
 
-        <section className="section">
-          <div className="container">
-            <div class="box ">
-              <div className="box-search">
+      <section className="section">
+        <div className="container">
+          <div class="box ">
+            <div className="box-search">
 
-              <div className="box-search-left">
-                <div className="box-search-place">
+            <div className="box-search-left">
+              <div className="box-search-place">
 
-                  <div className="box-search-from">
-                    <div class="field">
-                      <p class="control has-icons-left has-icons-right">
-                        <input value={from} className="input" type="text" placeholder="From" onChange={e => {
-                          setFrom(e.target.value)
-                          if (e.target.value.length === 2) {
-                            setShowFrom(true)
-                          }
+                <div className="box-search-from">
+                  <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                      <input value={from} className="input" type="text" placeholder="From" onChange={e => {
+                        setFrom(e.target.value)
+                        if (e.target.value.length === 2) {
+                          setShowFrom(true)
                         }
-                        } />
-                        <span class="icon is-small is-left">
-                          <i className="fas fa-plane-departure"></i>
-                        </span>
-                      </p>
-                    </div>
-                    {showFrom ? <a onClick={() => {
-                      setShowFrom(false)
-                      setFrom('SEA')
-                    }} className="panel-block is-active">
-                      Seattle, Washington SEA
-                      </a> : null}
+                      }
+                      } />
+                      <span class="icon is-small is-left">
+                        <i className="fas fa-plane-departure"></i>
+                      </span>
+                    </p>
                   </div>
+                  {showFrom ? <a onClick={() => {
+                    setShowFrom(false)
+                    setFrom('SEA')
+                  }} className="panel-block is-active">
+                    Seattle, Washington SEA
+                    </a> : null}
+                </div>
 
-                  <div className="box-search-to">
-                    <div class="field">
-                      <p class="control has-icons-left has-icons-right">
-                        <input value={to} className="input" type="text" placeholder="To" onChange={e => {
-                          setTo(e.target.value)
-                          if (e.target.value.length === 2) {
-                            setShowTo(true)
-                          }
-                          setTo(e.target.value)
-                        }} />
-                        <span class="icon is-small is-left">
-                          <i className="fas fa-plane-arrival"></i>
-                        </span>
-                      </p>
-                    </div>
-                    {showTo ? <a onClick={() => {
-                      setShowTo(false)
-                      setTo('SFO')
-                    }} className="panel-block is-active">
-                      San Francisco, California SFO
-                      </a> : null}
-
-                    </div>
+                <div className="box-search-to">
+                  <div class="field">
+                    <p class="control has-icons-left has-icons-right">
+                      <input value={to} className="input" type="text" placeholder="To" onChange={e => {
+                        setTo(e.target.value)
+                        if (e.target.value.length === 2) {
+                          setShowTo(true)
+                        }
+                        setTo(e.target.value)
+                      }} />
+                      <span class="icon is-small is-left">
+                        <i className="fas fa-plane-arrival"></i>
+                      </span>
+                    </p>
                   </div>
-                    <div className="box-search-dates">
-                      <div className="date-fields">
-                        <div class="field">
-                          <p class="control has-icons-left has-icons-right">
-                            <DateRangePicker
-                              startDate={startDate} // momentPropTypes.momentObj or null,
-                              startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
-                              endDate={endDate} // momentPropTypes.momentObj or null,
-                              endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
-                              onDatesChange={({ startDate, endDate }) => {
-                                setStartDate(startDate)
-                                setEndDate(endDate)
-                              }} // PropTypes.func.isRequired,
-                              focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
-                              onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
-                              initialVisibleMonth={() => moment()} // PropTypes.func or null,
-                            />
-                          </p>
-                        </div>
+                  {showTo ? <a onClick={() => {
+                    setShowTo(false)
+                    setTo('SFO')
+                  }} className="panel-block is-active">
+                    San Francisco, California SFO
+                    </a> : null}
+
+                  </div>
+                </div>
+                  <div className="box-search-dates">
+                    <div className="date-fields">
+                      <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                          <DateRangePicker
+                            startDate={startDate} // momentPropTypes.momentObj or null,
+                            startDateId="your_unique_start_date_id" // PropTypes.string.isRequired,
+                            endDate={endDate} // momentPropTypes.momentObj or null,
+                            endDateId="your_unique_end_date_id" // PropTypes.string.isRequired,
+                            onDatesChange={({ startDate, endDate }) => {
+                              setStartDate(startDate)
+                              setEndDate(endDate)
+                            }} // PropTypes.func.isRequired,
+                            focusedInput={focusedInput} // PropTypes.oneOf([START_DATE, END_DATE]) or null,
+                            onFocusChange={focusedInput => setFocusedInput(focusedInput)} // PropTypes.func.isRequired,
+                            initialVisibleMonth={() => moment()} // PropTypes.func or null,
+                          />
+                        </p>
                       </div>
-
                     </div>
 
-                </div>
-                <div className="box-search-right">
-                  <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
-                </div>
+                  </div>
 
               </div>
+              <div className="box-search-right">
+                <button onClick={searchFlights} className="button is-fullwidth">Search Flights</button>
+              </div>
+
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="section">
-          <div className="columns">
-            <div className="level">
-              <div className="level-right">
-                <div className="column level-item">
-                  <div class="dropdown">
-                    <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Stops</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                      <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
-                          Overview
-                    </a>
-                      </div>
-                    </div>
+      <section className="section">
+        <div className="columns">
+          <div className="level">
+            <div className="level-right">
+              <div className="column level-item">
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                      <span>Stops</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
                   </div>
-                </div>
-
-                <div className="column level-item">
-                  <div class="dropdown">
-                    <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Airlines</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                      <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
-                          Overview
-                    </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="column level-item">
-                  <div class="dropdown">
-                    <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Price</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                      <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
-                          Overview
-                    </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="column level-item">
-                  <div class="dropdown">
-                    <div class="dropdown-trigger">
-                      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
-                        <span>Times</span>
-                        <span class="icon is-small">
-                          <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                      </button>
-                    </div>
-                    <div class="dropdown-menu" id="dropdown-menu3" role="menu">
-                      <div class="dropdown-content">
-                        <a href="#" class="dropdown-item">
-                          Overview
-                    </a>
-                      </div>
+                  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                    <div class="dropdown-content">
+                      <a href="#" class="dropdown-item">
+                        Overview
+                  </a>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className="column level-item">
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                      <span>Airlines</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                    <div class="dropdown-content">
+                      <a href="#" class="dropdown-item">
+                        Overview
+                  </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="column level-item">
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                      <span>Price</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                    <div class="dropdown-content">
+                      <a href="#" class="dropdown-item">
+                        Overview
+                  </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="column level-item">
+                <div class="dropdown">
+                  <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                      <span>Times</span>
+                      <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                    <div class="dropdown-content">
+                      <a href="#" class="dropdown-item">
+                        Overview
+                  </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </section>
-        <section className="section">
-          <div className="container">
-            {/* {results.length > 0 ? <p className="search-result">Results</p> : null} */}
-            {
-              results.map(({ price: { base }, service, segments }, i) =>
-                <div className="box search-result" key={i}>
-                  <div className="segments">
-                    {
-                      segments.map(({ origin, destination }, k) =>
-                        <div className={
-                          `segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
-                        }>
-                          <article className="media">
-                            <div className="media-left">
-                              <figure className="image is-64x64">
-                                <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
-                              </figure>
-                            </div>
-                            <div className="media-content">
-                              <div className="content">
-                                <div class="columns">
-                                  <div class="column">
-                                    <p className="">7:45am - 6:00pm</p>
-                                    <p>Airline</p>
-                                  </div>
-                                  <div class="column">
-                                    <p>6h 15m</p>
-                                    <p className="">{origin}-{destination}</p>
-                                  </div>
-                                  <div class="column">
-                                    <p className="">Nonstop</p>
-                                  </div>
-                                  <div class="column">
-                                    <p className="price">${base}</p>
-                                  </div>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          {/* {results.length > 0 ? <p className="search-result">Results</p> : null} */}
+          {
+            results.map(({ price: { base }, service, segments }, i) =>
+              <div className="box search-result" key={i}>
+                <div className="segments">
+                  {
+                    segments.map(({ origin, destination }, k) =>
+                      <div className={
+                        `segment ${service.WCHC ? 'svc-WCHC' : ''} ${service.BLIND ? 'svc-BLIND' : ''} ${service.DEAF ? 'svc-DEAF' : ''} ${matchesPrefs(service) && 'a11y-match'}`
+                      }>
+                        <article className="media">
+                          <div className="media-left">
+                            <figure className="image is-64x64">
+                              <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                            </figure>
+                          </div>
+                          <div className="media-content">
+                            <div className="content">
+                              <div class="columns">
+                                <div class="column">
+                                  <p className="">7:45am - 6:00pm</p>
+                                  <p>Airline</p>
+                                </div>
+                                <div class="column">
+                                  <p>6h 15m</p>
+                                  <p className="">{origin}-{destination}</p>
+                                </div>
+                                <div class="column">
+                                  <p className="">Nonstop</p>
+                                </div>
+                                <div class="column">
+                                  <p className="price">${base}</p>
                                 </div>
                               </div>
                             </div>
-                          </article>
-                        </div>
-                      )
-                    }
-                  </div>
+                          </div>
+                        </article>
+                      </div>
+                    )
+                  }
                 </div>
-              )
-            }
-          </div>
-        </section>
+              </div>
+            )
+          }
+        </div>
+      </section>
 
-        <Footer />
-
-      </div>
-    </div >
+    </div>
   )
 }
 
